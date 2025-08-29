@@ -27,7 +27,6 @@ export default function Home() {
     { name: "Grocery Corner", icon: ShoppingBasket, href: "#" },
     { name: "Furniture's Corner", icon: Sofa, href: "#" },
     { name: "Fruit's Corner", icon: Apple, href: "#" },
-    { name: "Cook's Corner", icon: Utensils, href: "#" },
     { name: "Beverage Corner", icon: GlassWater, href: "#" },
   ];
   
@@ -80,12 +79,12 @@ export default function Home() {
                 Your trusted marketplace connecting all upazilas of Chattogram District. From Agrabad to Sitakunda - discover, buy, and sell locally.
             </p>
             <div className="mt-8 flex justify-center gap-4">
-                <Button size="default" className="bg-white text-primary hover:bg-gray-200 rounded-full" asChild>
+                <Button size="sm" className="bg-white text-primary hover:bg-gray-200 rounded-full" asChild>
                     <Link href="#featured">
                         Explore Marketplace <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                 </Button>
-                <Button size="default" variant="outline" className="bg-transparent border-2 border-white/50 text-white hover:bg-white/10 hover:text-white rounded-full" asChild>
+                <Button size="sm" variant="outline" className="bg-transparent border-white/50 text-white hover:bg-white/10 hover:text-white rounded-full" asChild>
                     <Link href="/about">
                         About Us
                     </Link>
