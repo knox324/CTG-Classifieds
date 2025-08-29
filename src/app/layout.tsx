@@ -3,6 +3,7 @@ import './globals.css';
 import { Header } from '@/components/layout/Header';
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from '@/components/ThemeProvider';
+import Script from 'next/script';
 
 export const metadata: Metadata = {
   title: 'ChattogramAds - Premium Classifieds',
@@ -28,10 +29,32 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
         >
+          <div id="google_translate_element" style={{ display: 'none' }}></div>
           <Header />
           <main>{children}</main>
           <Toaster />
         </ThemeProvider>
+
+        <Script
+          src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+          strategy="afterInteractive"
+        />
+        <Script
+          id="google-translate-init"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              function googleTranslateElementInit() {
+                new google.translate.TranslateElement({
+                  pageLanguage: 'en',
+                  includedLanguages: 'en,bn',
+                  layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                  autoDisplay: false
+                }, 'google_translate_element');
+              }
+            `,
+          }}
+        />
       </body>
     </html>
   );

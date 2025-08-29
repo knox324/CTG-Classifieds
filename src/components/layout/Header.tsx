@@ -5,38 +5,37 @@ import { useState, useEffect } from 'react';
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Search, MapPin, Plus, UserCircle, Bell, Loader2 } from "lucide-react";
+import { Search, MapPin, Plus, UserCircle, Bell, Loader2, Globe } from "lucide-react";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
 import { ThemeColorPicker } from "../ThemeColorPicker";
 
 export function Header() {
   const [location, setLocation] = useState("Chattogram");
-  const [isLoadingLocation, setIsLoadingLocation] = useState(false);
+  const [isLoadingLocation, setIsLoadingLocation] = useState(true);
 
   // Note: Geolocation is commented out as it requires a reverse geocoding API 
   // to turn coordinates into a location name, which is beyond the scope of this tool.
-  // useEffect(() => {
-  //   if ('geolocation' in navigator) {
-  //     setIsLoadingLocation(true);
-  //     navigator.geolocation.getCurrentPosition(
-  //       (position) => {
-  //         // In a real app, you would use a reverse geocoding service
-  //         // to convert position.coords.latitude and position.coords.longitude
-  //         // into an address (e.g., Upazila, District).
-  //         // For this demo, we'll just simulate it.
-  //         setTimeout(() => {
-  //           setLocation("Your Location"); // Placeholder
-  //           setIsLoadingLocation(false);
-  //         }, 1500);
-  //       },
-  //       () => {
-  //         // Handle error or user denial
-  //         setIsLoadingLocation(false);
-  //         setLocation("Chattogram"); // Fallback
-  //       }
-  //     );
-  //   }
-  // }, []);
+  useEffect(() => {
+    //   if ('geolocation' in navigator) {
+    //     navigator.geolocation.getCurrentPosition(
+    //       (position) => {
+    //         // In a real app, you would use a reverse geocoding service
+    //         // to convert position.coords.latitude and position.coords.longitude
+    //         // into an address (e.g., Upazila, District).
+    //         // For this demo, we'll just simulate it.
+    setTimeout(() => {
+        setLocation("Chattogram"); // Placeholder
+        setIsLoadingLocation(false);
+    }, 1500);
+    //       },
+    //       () => {
+    //         // Handle error or user denial
+    //         setIsLoadingLocation(false);
+    //         setLocation("Chattogram"); // Fallback
+    //       }
+    //     );
+    //   }
+  }, []);
 
 
   return (
@@ -68,6 +67,7 @@ export function Header() {
         </div>
 
         <div className="flex flex-1 items-center justify-end space-x-2">
+            <div id="google_translate_element_mobile" className="md:hidden"></div>
             <Button variant="ghost" className="hidden md:flex items-center gap-2">
                 {isLoadingLocation ? (
                   <>
@@ -85,6 +85,9 @@ export function Header() {
                   </>
                 )}
             </Button>
+            <div className="hidden md:block">
+              <div id="google_translate_element" className="translate-dropdown"></div>
+            </div>
             <ThemeColorPicker />
             <ThemeToggle />
             <Button variant="ghost" size="icon" className="hidden md:flex rounded-full">
