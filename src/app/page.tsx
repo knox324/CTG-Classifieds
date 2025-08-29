@@ -37,7 +37,6 @@ export default function Home() {
 
   const categoriesSectionRef = useRef<HTMLDivElement>(null);
   const categoriesContentRef = useRef<HTMLDivElement>(null);
-  const [scrollX, setScrollX] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,7 +51,7 @@ export default function Home() {
           const scrollableWidth = categoriesContentRef.current.scrollWidth - categoriesContentRef.current.clientWidth;
           const scrollProgress = (windowHeight - top) / (windowHeight + height);
           const newScrollX = Math.max(0, Math.min(scrollableWidth, scrollProgress * scrollableWidth * 1.5));
-          setScrollX(newScrollX);
+          categoriesContentRef.current.scrollLeft = newScrollX;
         }
       }
     };
@@ -108,23 +107,18 @@ export default function Home() {
           </div>
       </div>
 
-      <section id="categories" ref={categoriesSectionRef} className="py-24 overflow-hidden">
+      <section id="categories" ref={categoriesSectionRef} className="py-24">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-headline font-bold mb-8 text-center">Browse by Category</h2>
-          <div ref={categoriesContentRef} className="overflow-visible">
-            <div
-              className="flex gap-4 w-max transition-transform duration-100 ease-out"
-              style={{ transform: `translateX(-${scrollX}px)` }}
-            >
+          <div ref={categoriesContentRef} className="flex gap-4 pb-4 overflow-x-auto">
               {categories.map((category, index) => (
-                <Link key={`${category.name}-${index}`} href={category.href}>
+                <Link key={`${category.name}-${index}`} href={category.href} className="flex-shrink-0">
                   <Card className="flex flex-col items-center justify-center p-4 transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2 hover:bg-primary/10 w-36 h-36">
                     <category.icon className="h-10 w-10 text-primary mb-2" />
                     <span className="font-semibold text-center text-sm">{category.name}</span>
                   </Card>
                 </Link>
               ))}
-            </div>
           </div>
         </div>
       </section>
