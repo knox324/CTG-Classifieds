@@ -45,6 +45,14 @@ export default function Home() {
   useEffect(() => {
     const handleScroll = () => {
       if (categoriesSectionRef.current && categoriesContentRef.current) {
+        // Only apply parallax scroll on smaller screens where it's scrollable
+        const isScrollable = categoriesContentRef.current.scrollWidth > categoriesContentRef.current.clientWidth;
+        
+        if (!isScrollable) {
+            categoriesContentRef.current.style.transform = '';
+            return;
+        }
+
         const section = categoriesSectionRef.current;
         const rect = section.getBoundingClientRect();
         const { top, height } = rect;
@@ -60,10 +68,12 @@ export default function Home() {
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleScroll, { passive: true });
     handleScroll();
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
     };
   }, []);
 
@@ -114,10 +124,10 @@ export default function Home() {
           </div>
       </div>
 
-      <section id="categories" ref={categoriesSectionRef} className="py-24">
+      <section id="categories" ref={categoriesSectionRef} className="py-24 overflow-hidden">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-headline font-bold mb-8 text-center">Browse by Category</h2>
-          <div ref={categoriesContentRef} className="flex gap-4 pb-4 overflow-x-auto">
+          <div ref={categoriesContentRef} className="flex gap-4 pb-4 overflow-x-auto md:justify-center md:flex-wrap">
               {categories.map((category, index) => (
                 <Link key={`${category.name}-${index}`} href={category.href} className="flex-shrink-0">
                   <Card className="flex flex-col items-center justify-center p-4 transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2 hover:bg-primary/10 w-36 h-36">
