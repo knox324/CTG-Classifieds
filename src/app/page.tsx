@@ -42,7 +42,7 @@ export default function Home() {
 
         <div className="relative -mb-16">
             <div className="container mx-auto px-4">
-                <div className="bg-white/20 backdrop-blur-md rounded-xl p-6 flex justify-around items-center shadow-lg border border-white/20">
+                <div className="bg-white/30 dark:bg-black/30 backdrop-blur-lg border border-white/20 dark:border-black/20 rounded-xl p-6 flex justify-around items-center shadow-lg">
                     {stats.map((stat, index) => (
                         <div key={index} className="flex items-center gap-4">
                             <stat.icon className="h-10 w-10 text-accent" />

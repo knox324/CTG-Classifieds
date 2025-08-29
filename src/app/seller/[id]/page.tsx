@@ -15,7 +15,7 @@ export default function SellerPage({ params }: { params: { id: string } }) {
 
   return (
     <div className="container mx-auto px-4 py-12">
-      <Card className="mb-8 bg-white/30 dark:bg-black/30 backdrop-blur-lg border border-white/20 dark:border-black/20 rounded-xl p-6">
+      <Card className="mb-8 p-6">
         <div className="flex flex-col sm:flex-row items-start gap-6">
           <Avatar className="h-32 w-32 border-4 border-primary">
             <AvatarImage src={seller.avatarUrl} alt={seller.name} data-ai-hint="person" />

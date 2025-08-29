@@ -25,7 +25,7 @@ export default function AdPage({ params }: { params: { id: string } }) {
     <div className="container mx-auto px-4 py-12">
       <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
         <div className="md:col-span-2">
-          <Card className="overflow-hidden bg-white/30 dark:bg-black/30 backdrop-blur-lg border border-white/20 dark:border-black/20 rounded-xl">
+          <Card className="overflow-hidden">
             <div className="relative aspect-[16/10]">
               <Image
                 src={ad.imageUrl}
@@ -49,7 +49,7 @@ export default function AdPage({ params }: { params: { id: string } }) {
           </Card>
         </div>
         <div className="space-y-6">
-          <Card className="bg-white/30 dark:bg-black/30 backdrop-blur-lg border border-white/20 dark:border-black/20 rounded-xl">
+          <Card>
             <CardHeader>
               <CardTitle>Seller Information</CardTitle>
             </CardHeader>

@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 export default function PostAdPage() {
   return (
     <div className="container mx-auto max-w-3xl px-4 py-12">
-      <Card className="bg-white/30 dark:bg-black/30 backdrop-blur-lg border border-white/20 dark:border-black/20 rounded-xl">
+      <Card>
         <CardHeader>
           <CardTitle className="text-3xl font-headline">Create a New Ad</CardTitle>
           <CardDescription>
