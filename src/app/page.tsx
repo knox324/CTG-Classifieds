@@ -80,12 +80,12 @@ export default function Home() {
                 Your trusted marketplace connecting all upazilas of Chattogram District. From Agrabad to Sitakunda - discover, buy, and sell locally.
             </p>
             <div className="mt-8 flex justify-center gap-4">
-                <Button size="lg" className="bg-white text-primary hover:bg-gray-200 rounded-full h-14 px-8 text-lg font-semibold" asChild>
+                <Button size="default" className="bg-white text-primary hover:bg-gray-200 rounded-full" asChild>
                     <Link href="#featured">
-                        Explore Marketplace <ArrowRight className="ml-2 h-5 w-5" />
+                        Explore Marketplace <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                 </Button>
-                <Button size="lg" variant="outline" className="bg-transparent border-2 border-white/50 text-white hover:bg-white/10 hover:text-white rounded-full h-14 px-8 text-lg font-semibold" asChild>
+                <Button size="default" variant="outline" className="bg-transparent border-2 border-white/50 text-white hover:bg-white/10 hover:text-white rounded-full" asChild>
                     <Link href="/about">
                         About Us
                     </Link>
@@ -111,7 +111,7 @@ export default function Home() {
           </div>
       </div>
 
-      <section id="categories" ref={categoriesSectionRef} className="py-24">
+      <section id="categories" ref={categoriesSectionRef} className="py-24 overflow-hidden">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-headline font-bold mb-8 text-center">Browse by Category</h2>
           <div ref={categoriesContentRef} className="flex gap-4 pb-4 overflow-x-auto">
