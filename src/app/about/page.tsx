@@ -16,18 +16,6 @@ export default function AboutPage() {
       </div>
       
       <div className="container mx-auto px-4 pb-24">
-        <div className="relative">
-          <Image 
-            src="https://picsum.photos/seed/about-hero/1200/500" 
-            alt="Chattogram Landscape"
-            width={1200}
-            height={500}
-            className="rounded-3xl object-cover shadow-2xl"
-            data-ai-hint="cityscape landscape"
-          />
-          <div className="absolute inset-0 bg-primary/30 rounded-3xl"></div>
-        </div>
-
         <div className="grid md:grid-cols-3 gap-8 mt-16">
           <Card className="text-center">
             <CardHeader>
