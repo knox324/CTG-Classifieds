@@ -93,9 +93,9 @@ export function Header() {
                 <Bell className="h-5 w-5" />
             </Button>
             <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold rounded-full px-5 text-base h-11">
-              <Link href="/post-ad">
+              <a href="https://wa.me/8801810074097?text=I'd like to post an ad on ChattogramAds" target="_blank" rel="noopener noreferrer">
                 <Plus className="mr-1.5 h-5 w-5" /> Post Ad
-              </Link>
+              </a>
             </Button>
              <Button variant="ghost" size="icon" className="rounded-full">
                 <UserCircle className="h-7 w-7" />
