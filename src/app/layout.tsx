@@ -5,8 +5,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from '@/components/ThemeProvider';
 
 export const metadata: Metadata = {
-  title: 'CTG Classifieds',
-  description: 'A modern, premium classified ads website for Chattogram.',
+  title: 'ChattogramAds - Premium Classifieds',
+  description: 'Your trusted marketplace in Chattogram.',
 };
 
 export default function RootLayout({
@@ -19,12 +19,12 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
       </head>
-      <body className="font-body antialiased min-h-screen bg-gradient-to-br from-background to-blue-50 dark:to-slate-900">
+      <body className="font-body antialiased min-h-screen bg-background">
         <ThemeProvider
             attribute="class"
-            defaultTheme="dark"
+            defaultTheme="light"
             enableSystem
             disableTransitionOnChange
         >

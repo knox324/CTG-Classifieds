@@ -7,9 +7,9 @@ import { Button } from "@/components/ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
 const colors = [
+  { name: "Green", primary: { h: 158, s: 64, l: 47 }, accent: { h: 78, s: 86, l: 62 } },
   { name: "Blue", primary: { h: 197, s: 71, l: 53 }, accent: { h: 120, s: 73, l: 75 } },
   { name: "Rose", primary: { h: 346.8, s: 77.2, l: 49.8 }, accent: { h: 280, s: 80, l: 80 } },
-  { name: "Green", primary: { h: 142.1, s: 76.2, l: 36.3 }, accent: { h: 100, s: 70, l: 80 } },
   { name: "Orange", primary: { h: 24.6, s: 95, l: 53.1 }, accent: { h: 40, s: 90, l: 80 } },
   { name: "Violet", primary: { h: 262.1, s: 83.3, l: 57.8 }, accent: { h: 300, s: 80, l: 85 } },
 ];
