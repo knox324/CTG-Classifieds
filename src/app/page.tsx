@@ -45,7 +45,7 @@ export default function Home() {
         <div className="container mx-auto px-4 pt-20 pb-12 text-center">
             <h1 className="text-6xl md:text-8xl font-extrabold leading-tight">
                 Connect <br className="md:hidden" />
-                <span className="text-accent">Chattogram</span>
+                <span className="text-chart-4">Chattogram</span>
             </h1>
             <p className="mt-4 max-w-3xl mx-auto text-lg md:text-xl text-white/90">
                 Your trusted marketplace connecting all upazilas of Chattogram District. From Agrabad to Sitakunda - discover, buy, and sell locally.
