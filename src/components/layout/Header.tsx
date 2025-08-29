@@ -7,7 +7,7 @@ import { ThemeColorPicker } from "../ThemeColorPicker";
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-50 w-full bg-background/80 backdrop-blur-lg border-b rounded-b-2xl">
+    <header className="sticky top-0 z-50 w-full bg-background/80 backdrop-blur-lg border-b rounded-b-3xl">
       <div className="container flex h-20 items-center">
         <Link href="/" className="mr-6 flex items-center gap-2">
           <div className="bg-primary text-primary-foreground rounded-full h-9 w-9 flex items-center justify-center font-bold text-xl">
