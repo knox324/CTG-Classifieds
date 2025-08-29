@@ -42,14 +42,14 @@ export default function Home() {
             </div>
         </div>
 
-        <div className="relative -mb-16">
+        <div className="relative -mb-12">
             <div className="container mx-auto px-4">
-                <div className="bg-white/30 dark:bg-black/30 backdrop-blur-lg border border-white/20 dark:border-black/20 rounded-full p-4 flex justify-around items-center shadow-lg max-w-4xl mx-auto">
+                <div className="bg-white/30 dark:bg-black/30 backdrop-blur-lg border border-white/20 dark:border-black/20 rounded-full p-3 flex justify-around items-center shadow-lg max-w-3xl mx-auto">
                     {stats.map((stat, index) => (
-                        <div key={index} className="flex items-center gap-3 text-center md:text-left">
-                            <stat.icon className="h-8 w-8 text-accent" />
+                        <div key={index} className="flex items-center gap-2 text-center md:text-left">
+                            <stat.icon className="h-7 w-7 text-accent" />
                             <div className='hidden md:block'>
-                                <p className="text-2xl font-bold">{stat.value}</p>
+                                <p className="text-xl font-bold">{stat.value}</p>
                                 <p className="text-xs text-white/80">{stat.label}</p>
                             </div>
                         </div>
