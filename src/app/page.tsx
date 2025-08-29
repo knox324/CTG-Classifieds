@@ -29,10 +29,6 @@ export default function Home() {
     { name: "Fruit's Corner", icon: Apple, href: "#" },
     { name: "Cook's Corner", icon: Utensils, href: "#" },
     { name: "Beverage Corner", icon: GlassWater, href: "#" },
-    { name: "Kid's Corner", icon: Baby, href: "#" },
-    { name: "Men's Corner", icon: User, href: "#" },
-    { name: "Female's Corner", icon: UserRound, href: "#" },
-    { name: "Grocery Corner", icon: ShoppingBasket, href: "#" },
   ];
   
   const deliveryMethods = [
