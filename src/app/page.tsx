@@ -4,7 +4,8 @@ import { getAds } from '@/lib/data';
 import type { Ad } from '@/lib/types';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Box, UserCheck, Star } from 'lucide-react';
+import { ArrowRight, Box, UserCheck, Star, Baby, User, UserRound, ShoppingBasket, Sofa, Apple, Utensils, GlassWater } from 'lucide-react';
+import { Card } from '@/components/ui/card';
 
 export default function Home() {
   const ads: Ad[] = getAds();
@@ -13,6 +14,17 @@ export default function Home() {
     { icon: Box, value: "1,200+", label: "Active Ads" },
     { icon: UserCheck, value: "500+", label: "Verified Sellers" },
     { icon: Star, value: "4.9", label: "Average Rating" },
+  ];
+
+  const categories = [
+    { name: "Kid's Corner", icon: Baby, href: "#" },
+    { name: "Men's Corner", icon: User, href: "#" },
+    { name: "Female's Corner", icon: UserRound, href: "#" },
+    { name: "Grocery Corner", icon: ShoppingBasket, href: "#" },
+    { name: "Furniture's Corner", icon: Sofa, href: "#" },
+    { name: "Fruit's Corner", icon: Apple, href: "#" },
+    { name: "Cook's Corner", icon: Utensils, href: "#" },
+    { name: "Beverage Corner", icon: GlassWater, href: "#" },
   ];
 
   const locations = ["Agrabad", "Nasirabad", "Pahartali", "Khatunganj", "Sitakunda", "Mirsharai", "Fatikchhari"];
@@ -49,10 +61,10 @@ export default function Home() {
               <div className="bg-white/30 dark:bg-black/30 backdrop-blur-lg border border-white/20 dark:border-black/20 rounded-full p-3 flex justify-around items-center shadow-lg max-w-3xl mx-auto">
                   {stats.map((stat, index) => (
                       <div key={index} className="flex items-center gap-2 text-center md:text-left text-foreground">
-                          <stat.icon className="h-7 w-7 text-accent" />
+                          <stat.icon className="h-7 w-7 text-white" />
                           <div className='hidden md:block'>
-                              <p className="text-xl font-bold text-foreground">{stat.value}</p>
-                              <p className="text-xs text-foreground/80">{stat.label}</p>
+                              <p className="text-xl font-bold text-white">{stat.value}</p>
+                              <p className="text-xs text-white/80">{stat.label}</p>
                           </div>
                       </div>
                   ))}
@@ -60,7 +72,21 @@ export default function Home() {
           </div>
       </div>
 
-      <div id="featured" className="container mx-auto px-4 py-24">
+      <section id="categories" className="container mx-auto px-4 py-24">
+        <h2 className="text-4xl font-headline font-bold mb-8 text-center">Browse by Category</h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
+          {categories.map((category) => (
+            <Link key={category.name} href={category.href}>
+              <Card className="flex flex-col items-center justify-center p-4 aspect-square transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2 hover:bg-primary/10">
+                <category.icon className="h-10 w-10 text-primary mb-2" />
+                <span className="font-semibold text-center text-sm">{category.name}</span>
+              </Card>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <div id="featured" className="container mx-auto px-4 pb-24">
         <h2 className="text-4xl font-headline font-bold mb-8 text-center">Featured Listings</h2>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
