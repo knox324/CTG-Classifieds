@@ -96,10 +96,10 @@ export default function Home() {
               <div className="bg-white/30 dark:bg-black/30 backdrop-blur-lg border border-white/20 dark:border-black/20 rounded-full p-3 flex justify-around items-center shadow-lg max-w-3xl mx-auto">
                   {stats.map((stat, index) => (
                       <div key={index} className="flex items-center gap-2 text-center md:text-left">
-                          <stat.icon className="h-7 w-7 text-white" />
+                          <stat.icon className="h-7 w-7 text-primary-foreground" />
                           <div className='hidden md:block'>
-                              <p className="text-xl font-bold text-white">{stat.value}</p>
-                              <p className="text-xs text-white/80">{stat.label}</p>
+                              <p className="text-xl font-bold text-primary-foreground">{stat.value}</p>
+                              <p className="text-xs text-primary-foreground/80">{stat.label}</p>
                           </div>
                       </div>
                   ))}
