@@ -1,4 +1,6 @@
-import React from 'react';
+"use client";
+
+import React, { useState, useEffect, useRef } from 'react';
 import { AdCard } from '@/components/AdCard';
 import { getAds } from '@/lib/data';
 import type { Ad } from '@/lib/types';
@@ -25,9 +27,43 @@ export default function Home() {
     { name: "Fruit's Corner", icon: Apple, href: "#" },
     { name: "Cook's Corner", icon: Utensils, href: "#" },
     { name: "Beverage Corner", icon: GlassWater, href: "#" },
+    { name: "Kid's Corner", icon: Baby, href: "#" },
+    { name: "Men's Corner", icon: User, href: "#" },
+    { name: "Female's Corner", icon: UserRound, href: "#" },
+    { name: "Grocery Corner", icon: ShoppingBasket, href: "#" },
   ];
 
   const locations = ["Agrabad", "Nasirabad", "Pahartali", "Khatunganj", "Sitakunda", "Mirsharai", "Fatikchhari"];
+
+  const categoriesSectionRef = useRef<HTMLDivElement>(null);
+  const categoriesContentRef = useRef<HTMLDivElement>(null);
+  const [scrollX, setScrollX] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (categoriesSectionRef.current && categoriesContentRef.current) {
+        const section = categoriesSectionRef.current;
+        const rect = section.getBoundingClientRect();
+        const { top, height } = rect;
+        const windowHeight = window.innerHeight;
+
+        // Start animation when the top of the section is visible
+        if (top < windowHeight && top + height > 0) {
+          const scrollableWidth = categoriesContentRef.current.scrollWidth - categoriesContentRef.current.clientWidth;
+          const scrollProgress = (windowHeight - top) / (windowHeight + height);
+          const newScrollX = Math.max(0, Math.min(scrollableWidth, scrollProgress * scrollableWidth * 1.5));
+          setScrollX(newScrollX);
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
     <>
@@ -60,7 +96,7 @@ export default function Home() {
           <div className="container mx-auto px-4">
               <div className="bg-white/30 dark:bg-black/30 backdrop-blur-lg border border-white/20 dark:border-black/20 rounded-full p-3 flex justify-around items-center shadow-lg max-w-3xl mx-auto">
                   {stats.map((stat, index) => (
-                      <div key={index} className="flex items-center gap-2 text-center md:text-left text-foreground">
+                      <div key={index} className="flex items-center gap-2 text-center md:text-left">
                           <stat.icon className="h-7 w-7 text-white" />
                           <div className='hidden md:block'>
                               <p className="text-xl font-bold text-white">{stat.value}</p>
@@ -72,17 +108,24 @@ export default function Home() {
           </div>
       </div>
 
-      <section id="categories" className="container mx-auto px-4 py-24">
-        <h2 className="text-4xl font-headline font-bold mb-8 text-center">Browse by Category</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
-          {categories.map((category) => (
-            <Link key={category.name} href={category.href}>
-              <Card className="flex flex-col items-center justify-center p-4 aspect-square transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2 hover:bg-primary/10">
-                <category.icon className="h-10 w-10 text-primary mb-2" />
-                <span className="font-semibold text-center text-sm">{category.name}</span>
-              </Card>
-            </Link>
-          ))}
+      <section id="categories" ref={categoriesSectionRef} className="py-24 overflow-hidden">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-headline font-bold mb-8 text-center">Browse by Category</h2>
+          <div ref={categoriesContentRef} className="overflow-visible">
+            <div
+              className="flex gap-4 w-max transition-transform duration-100 ease-out"
+              style={{ transform: `translateX(-${scrollX}px)` }}
+            >
+              {categories.map((category, index) => (
+                <Link key={`${category.name}-${index}`} href={category.href}>
+                  <Card className="flex flex-col items-center justify-center p-4 transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2 hover:bg-primary/10 w-36 h-36">
+                    <category.icon className="h-10 w-10 text-primary mb-2" />
+                    <span className="font-semibold text-center text-sm">{category.name}</span>
+                  </Card>
+                </Link>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
