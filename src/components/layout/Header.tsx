@@ -27,7 +27,7 @@ export function Header() {
   const closeSheet = () => setIsSheetOpen(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-background/80 backdrop-blur-lg shadow-lg md:rounded-b-[2.5rem]">
+    <header className="sticky top-0 z-50 w-full bg-background/80 backdrop-blur-lg shadow-sm">
       <div className="container flex h-20 items-center">
         <Link href="/" className="mr-6 flex items-center gap-2">
           <div className="bg-primary text-primary-foreground rounded-full h-9 w-9 flex items-center justify-center font-bold text-xl">
@@ -100,7 +100,7 @@ export function Header() {
                         <span className="sr-only">Open menu</span>
                     </Button>
                 </SheetTrigger>
-                <SheetContent side="right" className="w-full sm:w-3/4">
+                <SheetContent side="right">
                     <div className="flex flex-col h-full p-4 space-y-6">
                         <div className="relative mt-8">
                             <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
