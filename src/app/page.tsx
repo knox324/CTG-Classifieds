@@ -34,8 +34,10 @@ export default function Home() {
                         Explore Marketplace <ArrowRight className="ml-2 h-5 w-5" />
                     </Link>
                 </Button>
-                <Button size="lg" variant="outline" className="border-2 border-white/50 text-white hover:bg-white/10 hover:text-white rounded-full h-14 px-8 text-lg font-semibold">
-                    How It Works
+                <Button size="lg" variant="outline" className="bg-background border-2 border-white/50 text-white hover:bg-white/10 hover:text-white rounded-full h-14 px-8 text-lg font-semibold" asChild>
+                    <Link href="#how-it-works">
+                        How It Works
+                    </Link>
                 </Button>
             </div>
         </div>
