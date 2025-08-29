@@ -83,8 +83,8 @@ export default function Home() {
                     </Link>
                 </Button>
                 <Button size="lg" variant="outline" className="bg-transparent border-2 border-white/50 text-white hover:bg-white/10 hover:text-white rounded-full h-14 px-8 text-lg font-semibold" asChild>
-                    <Link href="#how-it-works">
-                        How It Works
+                    <Link href="/about">
+                        About Us
                     </Link>
                 </Button>
             </div>
