@@ -84,7 +84,9 @@ export function Header() {
                   </>
                 )}
             </Button>
-            <div id="google_translate_element"></div>
+            <div id="google_translate_element" className="relative w-10 h-10 flex items-center justify-center">
+                <Globe className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-5 w-5 text-foreground/80 pointer-events-none" />
+            </div>
             <ThemeColorPicker />
             <ThemeToggle />
             <Button variant="ghost" size="icon" className="hidden md:flex rounded-full">
