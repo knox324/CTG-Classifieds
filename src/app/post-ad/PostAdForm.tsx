@@ -23,7 +23,9 @@ const formSchema = z.object({
   image: z.any().refine(file => file?.length == 1, 'Image is required.'),
 });
 
-const defaultCategories = ["Electronics", "Fashion", "Furniture", "Home Decor", "Books", "Sports"];
+const defaultCategories = [
+    "Kid's Corner", "Men's Corner", "Female's Corner", "Grocery Corner", "Furniture's Corner", "Fruit's Corner", "Beveridge Corner"
+];
 
 export function PostAdForm() {
   const [suggestedCategories, setSuggestedCategories] = useState<string[]>([]);

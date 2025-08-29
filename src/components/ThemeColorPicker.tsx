@@ -2,32 +2,35 @@
 
 import { useState, useEffect } from "react";
 import { Paintbrush } from "lucide-react";
+import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
 const colors = [
-  { name: "Blue", primary: "hsl(197, 71%, 53%)", accent: "hsl(120, 73%, 75%)" },
-  { name: "Rose", primary: "hsl(346.8, 77.2%, 49.8%)", accent: "hsl(280, 80%, 80%)" },
-  { name: "Green", primary: "hsl(142.1, 76.2%, 36.3%)", accent: "hsl(100, 70%, 80%)" },
-  { name: "Orange", primary: "hsl(24.6, 95%, 53.1%)", accent: "hsl(40, 90%, 80%)" },
-  { name: "Violet", primary: "hsl(262.1, 83.3%, 57.8%)", accent: "hsl(300, 80%, 85%)" },
+  { name: "Blue", primary: { h: 197, s: 71, l: 53 }, accent: { h: 120, s: 73, l: 75 } },
+  { name: "Rose", primary: { h: 346.8, s: 77.2, l: 49.8 }, accent: { h: 280, s: 80, l: 80 } },
+  { name: "Green", primary: { h: 142.1, s: 76.2, l: 36.3 }, accent: { h: 100, s: 70, l: 80 } },
+  { name: "Orange", primary: { h: 24.6, s: 95, l: 53.1 }, accent: { h: 40, s: 90, l: 80 } },
+  { name: "Violet", primary: { h: 262.1, s: 83.3, l: 57.8 }, accent: { h: 300, s: 80, l: 85 } },
 ];
 
 export function ThemeColorPicker() {
   const [mounted, setMounted] = useState(false);
+  const { theme } = useTheme();
   
-  // To avoid hydration mismatch
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  const handleColorChange = (primary: string, accent: string) => {
-    document.documentElement.style.setProperty("--primary", primary);
-    document.documentElement.style.setProperty("--accent", accent);
+  const handleColorChange = (primary: {h:number, s:number, l:number}, accent: {h:number, s:number, l:number}) => {
+    const root = document.querySelector(':root') as HTMLElement;
+    if (root) {
+      root.style.setProperty("--primary", `${primary.h} ${primary.s}% ${primary.l}%`);
+      root.style.setProperty("--accent", `${accent.h} ${accent.s}% ${accent.l}%`);
+    }
   };
   
   if (!mounted) {
-    // Return a placeholder or null to avoid rendering on the server
     return <div className="h-8 w-8" />;
   }
 
@@ -52,7 +55,7 @@ export function ThemeColorPicker() {
             >
               <span
                 className="h-full w-full rounded-full"
-                style={{ backgroundColor: color.primary }}
+                style={{ backgroundColor: `hsl(${color.primary.h}, ${color.primary.s}%, ${color.primary.l}%)` }}
               />
             </Button>
           ))}

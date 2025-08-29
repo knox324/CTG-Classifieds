@@ -20,7 +20,7 @@ const SuggestCategoriesInputSchema = z.object({
 export type SuggestCategoriesInput = z.infer<typeof SuggestCategoriesInputSchema>;
 
 const SuggestCategoriesOutputSchema = z.object({
-  categories: z.array(z.string()).describe('An array of suggested categories for the ad.'),
+  categories: z.array(z.string()).describe('An array of suggested categories and subcategories for the ad. Pick up to 5 of the most relevant categories and subcategories from the list provided.'),
 });
 export type SuggestCategoriesOutput = z.infer<typeof SuggestCategoriesOutputSchema>;
 
@@ -34,7 +34,87 @@ const prompt = ai.definePrompt({
   output: {schema: SuggestCategoriesOutputSchema},
   prompt: `You are an expert in classifying products for online classified ads.
 
-  Based on the image provided, suggest a list of relevant categories for the ad. Return the categories as a JSON array of strings.
+  Based on the image provided, suggest a list of relevant categories and subcategories for the ad. Pick up to 5 of the most relevant categories and subcategories from the list provided.
+  Return the categories as a JSON array of strings.
+
+  Available Categories and Subcategories:
+  - Kid's Corner
+    - Toys & Games
+    - Baby Gear
+    - Kids' Fashion
+    - School Supplies
+    - Books for Kids
+    - Strollers & Carriers
+    - Nursery Furniture
+    - Kids' Shoes
+    - Outdoor Play
+    - Party Supplies
+  - Men's Corner
+    - Men's Fashion
+    - Men's Shoes
+    - Watches & Accessories
+    - Grooming & Personal Care
+    - Sportswear
+    - Formal Wear
+    - Bags & Wallets
+    - Gadgets for Men
+    - Sunglasses
+    - Traditional Wear
+  - Female's Corner
+    - Women's Fashion
+    - Women's Shoes
+    - Handbags & Purses
+    - Jewelry
+    - Makeup & Cosmetics
+    - Skincare
+    - Traditional Wear
+    - Lingerie & Sleepwear
+    - Maternity Wear
+    - Accessories
+  - Grocery Corner
+    - Rice & Grains
+    - Cooking Oil
+    - Spices & Masalas
+    - Lentils & Pulses (Dal)
+    - Flour & Atta
+    - Sugar & Salt
+    - Tea & Coffee
+    - Noodles & Pasta
+    - Canned Goods
+    - Snacks & Biscuits
+  - Furniture's Corner
+    - Sofas & Living Room
+    - Beds & Bedroom
+    - Dining Sets
+    - Office Furniture
+    - Storage & Cabinets
+    - Outdoor Furniture
+    - Kids' Furniture
+    - Mattresses
+    - Home Decor
+    - Lighting
+  - Fruit's Corner
+    - Mangoes
+    - Bananas
+    - Apples
+    - Oranges & Citrus
+    - Grapes
+    - Berries
+    - Melons
+    - Dates
+    - Guava
+    - Papaya
+  - Beveridge Corner
+    - Soft Drinks
+    - Juices
+    - Water
+    - Energy Drinks
+    - Powdered Drinks
+    - Tea
+    - Coffee
+    - Milk & Dairy Drinks
+    - Healthy & Herbal Drinks
+    - Syrups & Concentrates
 
   Image: {{media url=photoDataUri}}
   `,
