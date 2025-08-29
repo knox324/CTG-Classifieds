@@ -19,8 +19,8 @@ export default function Home() {
 
   return (
     <>
-      <section className="bg-gradient-to-br from-primary to-green-600 text-white relative">
-        <div className="container mx-auto px-4 pt-20 pb-28 text-center">
+      <section className="bg-gradient-to-br from-primary to-green-600 text-white relative pb-16">
+        <div className="container mx-auto px-4 pt-20 pb-12 text-center">
             <h1 className="text-6xl md:text-8xl font-extrabold leading-tight">
                 Connect <br className="md:hidden" />
                 <span className="text-accent">Chattogram</span>
@@ -41,26 +41,26 @@ export default function Home() {
                 </Button>
             </div>
         </div>
-
-        <div className="relative -mb-12">
-            <div className="container mx-auto px-4">
-                <div className="bg-white/30 dark:bg-black/30 backdrop-blur-lg border border-white/20 dark:border-black/20 rounded-full p-3 flex justify-around items-center shadow-lg max-w-3xl mx-auto">
-                    {stats.map((stat, index) => (
-                        <div key={index} className="flex items-center gap-2 text-center md:text-left">
-                            <stat.icon className="h-7 w-7 text-accent" />
-                            <div className='hidden md:block'>
-                                <p className="text-xl font-bold">{stat.value}</p>
-                                <p className="text-xs text-white/80">{stat.label}</p>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </div>
         <div className="absolute bottom-0 left-0 w-full h-20 bg-background" style={{ clipPath: 'ellipse(100% 100% at 50% 100%)' }}></div>
       </section>
 
-      <div id="featured" className="container mx-auto px-4 py-24 pt-32">
+      <div className="relative -mt-28">
+          <div className="container mx-auto px-4">
+              <div className="bg-white/30 dark:bg-black/30 backdrop-blur-lg border border-white/20 dark:border-black/20 rounded-full p-3 flex justify-around items-center shadow-lg max-w-3xl mx-auto">
+                  {stats.map((stat, index) => (
+                      <div key={index} className="flex items-center gap-2 text-center md:text-left text-white">
+                          <stat.icon className="h-7 w-7 text-accent" />
+                          <div className='hidden md:block'>
+                              <p className="text-xl font-bold">{stat.value}</p>
+                              <p className="text-xs text-white/80">{stat.label}</p>
+                          </div>
+                      </div>
+                  ))}
+              </div>
+          </div>
+      </div>
+
+      <div id="featured" className="container mx-auto px-4 py-24">
         <h2 className="text-4xl font-headline font-bold mb-8 text-center">Featured Listings</h2>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
