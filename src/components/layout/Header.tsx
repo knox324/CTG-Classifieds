@@ -67,7 +67,6 @@ export function Header() {
         </div>
 
         <div className="flex flex-1 items-center justify-end space-x-2">
-            <div id="google_translate_element_mobile" className="md:hidden"></div>
             <Button variant="ghost" className="hidden md:flex items-center gap-2">
                 {isLoadingLocation ? (
                   <>
@@ -85,9 +84,7 @@ export function Header() {
                   </>
                 )}
             </Button>
-            <div className="hidden md:block">
-              <div id="google_translate_element" className="translate-dropdown"></div>
-            </div>
+            <div id="google_translate_element"></div>
             <ThemeColorPicker />
             <ThemeToggle />
             <Button variant="ghost" size="icon" className="hidden md:flex rounded-full">

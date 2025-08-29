@@ -29,7 +29,6 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
         >
-          <div id="google_translate_element" style={{ display: 'none' }}></div>
           <Header />
           <main>{children}</main>
           <Toaster />
