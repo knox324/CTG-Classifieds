@@ -115,7 +115,7 @@ export default function Home() {
           </div>
       </div>
 
-      <section id="categories" ref={categoriesSectionRef} className="py-24 overflow-hidden">
+      <section id="categories" ref={categoriesSectionRef} className="py-24">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-headline font-bold mb-8 text-center">Browse by Category</h2>
           <div ref={categoriesContentRef} className="flex gap-4 pb-4 overflow-x-auto">
@@ -141,8 +141,8 @@ export default function Home() {
         </div>
       </div>
       
-       <section className="relative py-24 bg-secondary/30">
-        <div className="absolute inset-0 overflow-hidden">
+       <section className="relative py-24 bg-secondary/30 overflow-hidden">
+        <div className="absolute inset-0">
           <Image
             src="https://picsum.photos/seed/delivery-bg/1920/1080"
             alt="Logistics background"
@@ -159,8 +159,12 @@ export default function Home() {
             From the bustling city to the quiet countryside, we connect Chattogram's businesses to the entire nation.
           </p>
           <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
-            {deliveryMethods.map((method) => (
-              <div key={method.name} className="flex flex-col items-center gap-3">
+            {deliveryMethods.map((method, index) => (
+              <div 
+                key={method.name} 
+                className="flex flex-col items-center gap-3 transition-all duration-500 ease-out [animation-timeline:view()] [animation-range:entry_25%_cover_50%] animate-in fade-in-0 slide-in-from-bottom-10"
+                style={{ animationDelay: `${index * 150}ms` }}
+              >
                 <div className="bg-background/70 backdrop-blur-sm rounded-full p-5 border shadow-lg">
                   <method.icon className="h-10 w-10 text-primary" />
                 </div>
@@ -187,3 +191,5 @@ export default function Home() {
     </>
   );
 }
+
+    
