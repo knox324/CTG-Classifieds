@@ -51,8 +51,8 @@ export default function Home() {
                       <div key={index} className="flex items-center gap-2 text-center md:text-left text-foreground">
                           <stat.icon className="h-7 w-7 text-accent" />
                           <div className='hidden md:block'>
-                              <p className="text-xl font-bold text-primary">{stat.value}</p>
-                              <p className="text-xs text-muted-foreground">{stat.label}</p>
+                              <p className="text-xl font-bold text-foreground">{stat.value}</p>
+                              <p className="text-xs text-foreground/80">{stat.label}</p>
                           </div>
                       </div>
                   ))}
