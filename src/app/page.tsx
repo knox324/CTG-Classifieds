@@ -99,7 +99,11 @@ export default function Home() {
           <div className="container mx-auto px-4">
               <div className="bg-white/30 dark:bg-black/30 backdrop-blur-lg border border-white/20 dark:border-black/20 rounded-full p-3 flex justify-around items-center shadow-lg max-w-3xl mx-auto">
                   {stats.map((stat, index) => (
-                      <div key={index} className="flex items-center gap-2 text-center md:text-left">
+                      <div 
+                        key={index} 
+                        className="flex items-center gap-2 text-center md:text-left animate-in fade-in-0 slide-in-from-bottom-10 duration-500 ease-out"
+                        style={{ animationFillMode: 'backwards', animationDelay: `${index * 150}ms` }}
+                      >
                           <stat.icon className="h-7 w-7 text-primary" />
                           <div className='hidden md:block'>
                               <p className="text-xl font-bold text-foreground">{stat.value}</p>
@@ -111,7 +115,7 @@ export default function Home() {
           </div>
       </div>
 
-      <section id="categories" ref={categoriesSectionRef} className="py-24 overflow-hidden">
+      <section id="categories" ref={categoriesSectionRef} className="py-24">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-headline font-bold mb-8 text-center">Browse by Category</h2>
           <div ref={categoriesContentRef} className="flex gap-4 pb-4 overflow-x-auto">
