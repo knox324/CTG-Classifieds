@@ -7,8 +7,9 @@ import { getAds } from '@/lib/data';
 import type { Ad } from '@/lib/types';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Box, UserCheck, Star, Baby, User, UserRound, ShoppingBasket, Sofa, Apple, Utensils, GlassWater } from 'lucide-react';
+import { ArrowRight, Box, UserCheck, Star, Baby, User, UserRound, ShoppingBasket, Sofa, Apple, Utensils, GlassWater, Plane, Bus, Car, Bike } from 'lucide-react';
 import { Card } from '@/components/ui/card';
+import Image from 'next/image';
 
 export default function Home() {
   const ads: Ad[] = getAds();
@@ -33,6 +34,13 @@ export default function Home() {
     { name: "Female's Corner", icon: UserRound, href: "#" },
     { name: "Grocery Corner", icon: ShoppingBasket, href: "#" },
   ];
+  
+  const deliveryMethods = [
+    { name: "Air Cargo", icon: Plane },
+    { name: "Bus Parcel", icon: Bus },
+    { name: "Courier Van", icon: Car },
+    { name: "Local Delivery", icon: Bike },
+  ];
 
   const locations = ["Agrabad", "Nasirabad", "Pahartali", "Khatunganj", "Sitakunda", "Mirsharai", "Fatikchhari"];
 
@@ -47,7 +55,6 @@ export default function Home() {
         const { top, height } = rect;
         const windowHeight = window.innerHeight;
 
-        // Start animation when the top of the section is visible
         if (top < windowHeight && top + height > 0) {
           const scrollableWidth = categoriesContentRef.current.scrollWidth - categoriesContentRef.current.clientWidth;
           const scrollProgress = (windowHeight - top) / (windowHeight + height);
@@ -108,7 +115,7 @@ export default function Home() {
           </div>
       </div>
 
-      <section id="categories" ref={categoriesSectionRef} className="py-24">
+      <section id="categories" ref={categoriesSectionRef} className="py-24 overflow-hidden">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-headline font-bold mb-8 text-center">Browse by Category</h2>
           <div ref={categoriesContentRef} className="flex gap-4 pb-4 overflow-x-auto">
@@ -133,6 +140,36 @@ export default function Home() {
           ))}
         </div>
       </div>
+      
+       <section className="relative py-24 bg-secondary/30">
+        <div className="absolute inset-0 overflow-hidden">
+          <Image
+            src="https://picsum.photos/seed/delivery-bg/1920/1080"
+            alt="Logistics background"
+            fill
+            className="object-cover opacity-10"
+            data-ai-hint="logistics delivery"
+          />
+        </div>
+        <div className="container mx-auto px-4 text-center relative">
+          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-primary">
+            Delivering products wholesale, anywhere you are
+          </h2>
+          <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
+            From the bustling city to the quiet countryside, we connect Chattogram's businesses to the entire nation.
+          </p>
+          <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+            {deliveryMethods.map((method) => (
+              <div key={method.name} className="flex flex-col items-center gap-3">
+                <div className="bg-background/70 backdrop-blur-sm rounded-full p-5 border shadow-lg">
+                  <method.icon className="h-10 w-10 text-primary" />
+                </div>
+                <h3 className="text-lg font-semibold">{method.name}</h3>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
        <div className="bg-secondary/50 py-4">
           <div className="container mx-auto px-4 flex items-center justify-center gap-2 text-muted-foreground text-sm">
