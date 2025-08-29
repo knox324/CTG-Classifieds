@@ -39,44 +39,6 @@ export default function Home() {
 
   const locations = ["Agrabad", "Nasirabad", "Pahartali", "Khatunganj", "Sitakunda", "Mirsharai", "Fatikchhari"];
 
-  const categoriesSectionRef = useRef<HTMLDivElement>(null);
-  const categoriesContentRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (categoriesSectionRef.current && categoriesContentRef.current) {
-        // Only apply parallax scroll on smaller screens where it's scrollable
-        const isScrollable = categoriesContentRef.current.scrollWidth > categoriesContentRef.current.clientWidth;
-        
-        if (!isScrollable) {
-            categoriesContentRef.current.style.transform = '';
-            return;
-        }
-
-        const section = categoriesSectionRef.current;
-        const rect = section.getBoundingClientRect();
-        const { top, height } = rect;
-        const windowHeight = window.innerHeight;
-
-        if (top < windowHeight && top + height > 0) {
-          const scrollableWidth = categoriesContentRef.current.scrollWidth - categoriesContentRef.current.clientWidth;
-          const scrollProgress = (windowHeight - top) / (windowHeight + height);
-          const newScrollX = Math.max(0, Math.min(scrollableWidth, scrollProgress * scrollableWidth * 1.5));
-          categoriesContentRef.current.scrollLeft = newScrollX;
-        }
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    window.addEventListener('resize', handleScroll, { passive: true });
-    handleScroll();
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleScroll);
-    };
-  }, []);
-
   return (
     <>
       <section className="bg-gradient-to-br from-primary to-green-600 text-white relative pb-16">
@@ -124,17 +86,23 @@ export default function Home() {
           </div>
       </div>
 
-      <section id="categories" ref={categoriesSectionRef} className="py-24 overflow-hidden">
+      <section id="categories" className="py-24 overflow-hidden">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-headline font-bold mb-8 text-center">Browse by Category</h2>
-          <div ref={categoriesContentRef} className="flex gap-4 pb-4 overflow-x-auto md:justify-center md:flex-wrap">
+          <div className="flex gap-4 pb-4 overflow-x-auto md:justify-center md:flex-wrap">
               {categories.map((category, index) => (
-                <Link key={`${category.name}-${index}`} href={category.href} className="flex-shrink-0">
-                  <Card className="flex flex-col items-center justify-center p-4 transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2 hover:bg-primary/10 w-36 h-36">
-                    <category.icon className="h-10 w-10 text-primary mb-2" />
-                    <span className="font-semibold text-center text-sm">{category.name}</span>
-                  </Card>
-                </Link>
+                <div
+                  key={`${category.name}-${index}`}
+                  className="animate-in fade-in zoom-in-95 duration-500 ease-out"
+                  style={{ animationFillMode: 'backwards', animationDelay: `${index * 100}ms` }}
+                >
+                  <Link href={category.href} className="flex-shrink-0">
+                    <Card className="flex flex-col items-center justify-center p-4 transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2 hover:bg-primary/10 w-36 h-36">
+                      <category.icon className="h-10 w-10 text-primary mb-2" />
+                      <span className="font-semibold text-center text-sm">{category.name}</span>
+                    </Card>
+                  </Link>
+                </div>
               ))}
           </div>
         </div>
