@@ -162,8 +162,8 @@ export default function Home() {
             {deliveryMethods.map((method, index) => (
               <div 
                 key={method.name} 
-                className="flex flex-col items-center gap-3 transition-all duration-500 ease-out [animation-timeline:view()] [animation-range:entry_25%_cover_50%] animate-in fade-in-0 slide-in-from-bottom-10"
-                style={{ animationDelay: `${index * 150}ms` }}
+                className="flex flex-col items-center gap-3 animate-in fade-in-0 slide-in-from-bottom-10 duration-500 ease-out"
+                style={{ animationFillMode: 'backwards', animationDelay: `${index * 150}ms` }}
               >
                 <div className="bg-background/70 backdrop-blur-sm rounded-full p-5 border shadow-lg">
                   <method.icon className="h-10 w-10 text-primary" />
@@ -191,5 +191,3 @@ export default function Home() {
     </>
   );
 }
-
-    
