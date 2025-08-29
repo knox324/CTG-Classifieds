@@ -19,7 +19,7 @@ export default function Home() {
 
   return (
     <>
-      <section className="bg-gradient-to-br from-primary to-green-600 text-white">
+      <section className="bg-gradient-to-br from-primary to-green-600 text-white relative">
         <div className="container mx-auto px-4 pt-20 pb-28 text-center">
             <h1 className="text-6xl md:text-8xl font-extrabold leading-tight">
                 Connect <br className="md:hidden" />
@@ -57,6 +57,7 @@ export default function Home() {
                 </div>
             </div>
         </div>
+        <div className="absolute bottom-0 left-0 w-full h-20 bg-background" style={{ clipPath: 'ellipse(100% 100% at 50% 100%)' }}></div>
       </section>
 
       <div id="featured" className="container mx-auto px-4 py-24 pt-32">
