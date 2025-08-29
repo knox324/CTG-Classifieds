@@ -16,18 +16,16 @@ const colors = [
 
 export function ThemeColorPicker() {
   const [mounted, setMounted] = useState(false);
-  const { theme } = useTheme();
+  const { theme, setTheme } = useTheme();
   
   useEffect(() => {
     setMounted(true);
   }, []);
 
   const handleColorChange = (primary: {h:number, s:number, l:number}, accent: {h:number, s:number, l:number}) => {
-    const root = document.querySelector(':root') as HTMLElement;
-    if (root) {
-      root.style.setProperty("--primary", `${primary.h} ${primary.s}% ${primary.l}%`);
-      root.style.setProperty("--accent", `${accent.h} ${accent.s}% ${accent.l}%`);
-    }
+    const root = document.documentElement;
+    root.style.setProperty("--primary", `${primary.h} ${primary.s}% ${primary.l}%`);
+    root.style.setProperty("--accent", `${accent.h} ${accent.s}% ${accent.l}%`);
   };
   
   if (!mounted) {

@@ -24,7 +24,13 @@ const formSchema = z.object({
 });
 
 const defaultCategories = [
-    "Kid's Corner", "Men's Corner", "Female's Corner", "Grocery Corner", "Furniture's Corner", "Fruit's Corner", "Beveridge Corner"
+    "Kid's Corner", "Toys & Games", "Baby Gear", "Kids' Fashion", "School Supplies", "Books for Kids", "Strollers & Carriers", "Nursery Furniture", "Kids' Shoes", "Outdoor Play",
+    "Men's Corner", "Men's Fashion", "Men's Shoes", "Watches & Accessories", "Grooming & Personal Care", "Sportswear", "Formal Wear", "Bags & Wallets", "Gadgets for Men", "Sunglasses",
+    "Female's Corner", "Women's Fashion", "Women's Shoes", "Handbags & Purses", "Jewelry", "Makeup & Cosmetics", "Skincare", "Lingerie & Sleepwear", "Maternity Wear", "Accessories",
+    "Grocery Corner", "Rice & Grains", "Cooking Oil", "Spices & Masalas", "Lentils & Pulses (Dal)", "Flour & Atta", "Sugar & Salt", "Tea & Coffee", "Noodles & Pasta", "Canned Goods",
+    "Furniture's Corner", "Sofas & Living Room", "Beds & Bedroom", "Dining Sets", "Office Furniture", "Storage & Cabinets", "Outdoor Furniture", "Kids' Furniture", "Mattresses", "Home Decor",
+    "Fruit's Corner", "Mangoes", "Bananas", "Apples", "Oranges & Citrus", "Grapes", "Berries", "Melons", "Dates", "Guava",
+    "Beveridge Corner", "Soft Drinks", "Juices", "Water", "Energy Drinks", "Powdered Drinks", "Tea", "Coffee", "Milk & Dairy Drinks", "Healthy & Herbal Drinks"
 ];
 
 export function PostAdForm() {
