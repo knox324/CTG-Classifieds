@@ -91,12 +91,12 @@ export default function Home() {
                   {stats.map((stat, index) => (
                       <div 
                         key={index} 
-                        className="flex items-center gap-2 text-center md:text-left animate-in fade-in-0 slide-in-from-bottom-10 duration-500 ease-out"
+                        className="flex flex-col items-center gap-2 text-center animate-in fade-in-0 slide-in-from-bottom-10 duration-500 ease-out"
                         style={{ animationFillMode: 'backwards', animationDelay: `${index * 150}ms` }}
                       >
                           <stat.icon className="h-6 w-6 md:h-7 md:w-7 text-primary" />
-                          <div className='hidden md:block'>
-                              <p className="text-xl font-bold text-foreground">{stat.value}</p>
+                          <div>
+                              <p className="text-sm md:text-xl font-bold text-foreground">{stat.value}</p>
                               <p className="text-xs text-foreground/80">{stat.label}</p>
                           </div>
                       </div>
