@@ -34,7 +34,7 @@ export default function Home() {
                         Explore Marketplace <ArrowRight className="ml-2 h-5 w-5" />
                     </Link>
                 </Button>
-                <Button size="lg" variant="outline" className="bg-background border-2 border-white/50 text-white hover:bg-white/10 hover:text-white rounded-full h-14 px-8 text-lg font-semibold" asChild>
+                <Button size="lg" variant="outline" className="bg-transparent border-2 border-white/50 text-white hover:bg-white/10 hover:text-white rounded-full h-14 px-8 text-lg font-semibold" asChild>
                     <Link href="#how-it-works">
                         How It Works
                     </Link>
@@ -44,13 +44,13 @@ export default function Home() {
 
         <div className="relative -mb-16">
             <div className="container mx-auto px-4">
-                <div className="bg-white/30 dark:bg-black/30 backdrop-blur-lg border border-white/20 dark:border-black/20 rounded-xl p-6 flex justify-around items-center shadow-lg">
+                <div className="bg-white/30 dark:bg-black/30 backdrop-blur-lg border border-white/20 dark:border-black/20 rounded-full p-4 flex justify-around items-center shadow-lg max-w-4xl mx-auto">
                     {stats.map((stat, index) => (
-                        <div key={index} className="flex items-center gap-4">
-                            <stat.icon className="h-10 w-10 text-accent" />
-                            <div>
-                                <p className="text-3xl font-bold">{stat.value}</p>
-                                <p className="text-sm text-white/80">{stat.label}</p>
+                        <div key={index} className="flex items-center gap-3 text-center md:text-left">
+                            <stat.icon className="h-8 w-8 text-accent" />
+                            <div className='hidden md:block'>
+                                <p className="text-2xl font-bold">{stat.value}</p>
+                                <p className="text-xs text-white/80">{stat.label}</p>
                             </div>
                         </div>
                     ))}
