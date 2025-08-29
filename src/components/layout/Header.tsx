@@ -1,11 +1,44 @@
+
+"use client";
+
+import { useState, useEffect } from 'react';
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Search, MapPin, Globe, Plus, UserCircle, Bell } from "lucide-react";
+import { Search, MapPin, Plus, UserCircle, Bell, Loader2 } from "lucide-react";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
 import { ThemeColorPicker } from "../ThemeColorPicker";
 
 export function Header() {
+  const [location, setLocation] = useState("Chattogram");
+  const [isLoadingLocation, setIsLoadingLocation] = useState(false);
+
+  // Note: Geolocation is commented out as it requires a reverse geocoding API 
+  // to turn coordinates into a location name, which is beyond the scope of this tool.
+  // useEffect(() => {
+  //   if ('geolocation' in navigator) {
+  //     setIsLoadingLocation(true);
+  //     navigator.geolocation.getCurrentPosition(
+  //       (position) => {
+  //         // In a real app, you would use a reverse geocoding service
+  //         // to convert position.coords.latitude and position.coords.longitude
+  //         // into an address (e.g., Upazila, District).
+  //         // For this demo, we'll just simulate it.
+  //         setTimeout(() => {
+  //           setLocation("Your Location"); // Placeholder
+  //           setIsLoadingLocation(false);
+  //         }, 1500);
+  //       },
+  //       () => {
+  //         // Handle error or user denial
+  //         setIsLoadingLocation(false);
+  //         setLocation("Chattogram"); // Fallback
+  //       }
+  //     );
+  //   }
+  // }, []);
+
+
   return (
     <header className="sticky top-0 z-50 w-full bg-background/80 backdrop-blur-lg shadow-lg rounded-b-[2.5rem]">
       <div className="container flex h-20 items-center">
@@ -36,12 +69,21 @@ export function Header() {
 
         <div className="flex flex-1 items-center justify-end space-x-2">
             <Button variant="ghost" className="hidden md:flex items-center gap-2">
-                <span className="relative flex h-3 w-3">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-3 w-3 bg-accent"></span>
-                </span>
-                <MapPin className="h-5 w-5" />
-                Chattogram
+                {isLoadingLocation ? (
+                  <>
+                    <Loader2 className="h-5 w-5 animate-spin" />
+                    <span>Loading...</span>
+                  </>
+                ) : (
+                  <>
+                    <span className="relative flex h-3 w-3">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-3 w-3 bg-accent"></span>
+                    </span>
+                    <MapPin className="h-5 w-5" />
+                    {location}
+                  </>
+                )}
             </Button>
             <ThemeColorPicker />
             <ThemeToggle />
