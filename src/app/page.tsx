@@ -8,7 +8,7 @@ import type { AdWithSeller } from '@/lib/types';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Box, UserCheck, Star, Baby, User, UserRound, ShoppingBasket, Sofa, Apple, GlassWater, Plane, Bus, Car, Bike } from 'lucide-react';
-import { Card } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import Image from 'next/image';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi } from '@/components/ui/carousel';
 
@@ -27,6 +27,7 @@ export default function Home() {
   const [carouselApi, setCarouselApi] = useState<CarouselApi | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
+  const [marketingCarouselApi, setMarketingCarouselApi] = useState<CarouselApi | null>(null);
 
   const stats = [
     { icon: Box, value: "1,200+", label: "Active Ads" },
@@ -48,6 +49,14 @@ export default function Home() {
   ];
 
   const locations = ["Agrabad", "Nasirabad", "Pahartali", "Khatunganj", "Sitakunda", "Mirsharai", "Fatikchhari"];
+  
+    const marketingBanners = [
+    { src: 'https://picsum.photos/seed/banner1/1200/400', alt: 'Marketing Banner 1', hint: 'sale promotion' },
+    { src: 'https://picsum.photos/seed/banner2/1200/400', alt: 'Marketing Banner 2', hint: 'new arrivals' },
+    { src: 'https://picsum.photos/seed/banner3/1200/400', alt: 'Marketing Banner 3', hint: 'special offer' },
+    { src: 'https://picsum.photos/seed/banner4/1200/400', alt: 'Marketing Banner 4', hint: 'holiday discount' },
+    { src: 'https://picsum.photos/seed/banner5/1200/400', alt: 'Marketing Banner 5', hint: 'clearance sale' },
+  ];
   
   useEffect(() => {
     const style = document.createElement('style');
@@ -153,27 +162,46 @@ export default function Home() {
         </div>
       </section>
 
+      <section id="marketing" className="container mx-auto px-4 pb-16">
+        <Carousel setApi={setMarketingCarouselApi} opts={{ align: 'center', loop: true }}>
+          <CarouselContent>
+            {marketingBanners.map((banner, index) => (
+              <CarouselItem key={index}>
+                <Card className="overflow-hidden">
+                  <div className="relative aspect-[3/1]">
+                    <Image
+                      src={banner.src}
+                      alt={banner.alt}
+                      fill
+                      className="object-cover"
+                      data-ai-hint={banner.hint}
+                    />
+                  </div>
+                </Card>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="hidden md:flex" />
+          <CarouselNext className="hidden md:flex" />
+        </Carousel>
+      </section>
+
       <div id="featured" className="container mx-auto px-4 pb-24">
         <h2 className="text-3xl md:text-4xl font-headline font-bold mb-8 text-center">Featured Listings</h2>
         
         <Carousel
           setApi={setCarouselApi}
           opts={{
-            align: 'center',
+            align: 'start',
             loop: true,
           }}
           className="w-full"
         >
           <CarouselContent className="-ml-4">
             {ads.map((ad, index) => (
-              <CarouselItem key={ad.id} className="basis-[90%] sm:basis-[70%] md:basis-1/3 group">
+              <CarouselItem key={ad.id} className="basis-[90%] sm:basis-[45%] md:basis-1/3 lg:basis-1/4 group">
                  <div className="p-1 h-full">
-                   <div className="transition-all duration-500 ease-in-out h-full" style={{
-                      transform: `scale(${activeIndex === index ? 1 : 0.85})`,
-                      opacity: activeIndex === index ? 1 : 0.6,
-                    }}>
                     <AdCard ad={ad} />
-                   </div>
                  </div>
               </CarouselItem>
             ))}
