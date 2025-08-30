@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import Image from 'next/image';
 import type { Ad } from '@/lib/types';
@@ -11,7 +12,7 @@ interface AdCardProps {
 export function AdCard({ ad }: AdCardProps) {
   return (
     <Link href={`/ad/${ad.id}`} className="group">
-      <Card className="overflow-hidden transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2">
+      <Card className="overflow-hidden transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2 hover:bg-white/50 dark:hover:bg-black/50">
         <div className="relative aspect-[4/3]">
           <Image
             src={ad.imageUrl}

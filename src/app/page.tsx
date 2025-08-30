@@ -10,6 +10,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, Box, UserCheck, Star, Baby, User, UserRound, ShoppingBasket, Sofa, Apple, Utensils, GlassWater, Plane, Bus, Car, Bike } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import Image from 'next/image';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 
 export default function Home() {
   const ads: Ad[] = getAds();
@@ -97,7 +98,7 @@ export default function Home() {
                           <stat.icon className="h-6 w-6 md:h-7 md:w-7 text-primary" />
                           <div>
                               <p className="text-sm md:text-xl font-bold text-foreground">{stat.value}</p>
-                              <p className="text-xs text-foreground/80">{stat.label}</p>
+                              <p className="text-xs text-foreground/80 md:block">{stat.label}</p>
                           </div>
                       </div>
                   ))}
@@ -130,11 +131,25 @@ export default function Home() {
       <div id="featured" className="container mx-auto px-4 pb-24">
         <h2 className="text-3xl md:text-4xl font-headline font-bold mb-8 text-center">Featured Listings</h2>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
-          {ads.map((ad) => (
-            <AdCard key={ad.id} ad={ad} />
-          ))}
-        </div>
+        <Carousel
+          opts={{
+            align: 'start',
+            loop: true,
+          }}
+          className="w-full"
+        >
+          <CarouselContent>
+            {ads.map((ad) => (
+              <CarouselItem key={ad.id} className="sm:basis-1/2 lg:basis-1/3 xl:basis-1/4">
+                 <div className="p-1">
+                    <AdCard ad={ad} />
+                 </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="hidden md:flex"/>
+          <CarouselNext className="hidden md:flex"/>
+        </Carousel>
       </div>
       
        <section className="relative py-24 bg-secondary/30 overflow-hidden">
