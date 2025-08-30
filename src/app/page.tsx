@@ -177,21 +177,20 @@ export default function Home() {
                     {featuredAds.map((ad, index) => (
                         <CarouselItem key={index} className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3">
                             <div className="p-1">
-                                <Card className="overflow-hidden transition-all duration-500 ease-in-out">
+                                <Card className="overflow-hidden transition-all duration-500 ease-in-out rounded-xl">
                                     <div 
-                                        className={`relative aspect-video transition-all duration-500 ease-in-out 
-                                        ${activeIndex === index ? 'shadow-2xl' : 'shadow-md'}
+                                        className={`relative aspect-video transition-all duration-500 ease-in-out rounded-xl
                                         ${
                                           activeIndex === index
-                                            ? 'md:scale-125'
-                                            : 'md:scale-90 opacity-70 blur-sm'
+                                            ? 'md:scale-125 shadow-[0_0_20px_5px] shadow-primary/50'
+                                            : 'md:scale-90 opacity-70'
                                         }`}
                                         >
                                         <Image
                                             src={ad.src}
                                             alt={ad.alt}
                                             fill
-                                            className="object-cover"
+                                            className="object-cover rounded-xl"
                                             data-ai-hint={ad.hint}
                                         />
                                     </div>
