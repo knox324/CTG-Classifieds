@@ -106,7 +106,7 @@ export default function Home() {
             </p>
             <div className="mt-8 flex flex-col sm:flex-row justify-center items-center gap-4">
                 <Button size="sm" className="bg-white text-primary hover:bg-gray-200 rounded-full w-full sm:w-auto" asChild>
-                    <Link href="#featured">
+                    <Link href="#all-products">
                         Explore Marketplace <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                 </Button>
@@ -162,7 +162,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="marketing" className="container mx-auto px-4 pb-16">
+      <section id="featured-ads" className="container mx-auto px-4 pb-16">
+        <h2 className="text-3xl md:text-4xl font-headline font-bold mb-8 text-center">Featured ads</h2>
         <Carousel setApi={setMarketingCarouselApi} opts={{ align: 'center', loop: true }}>
           <CarouselContent>
             {marketingBanners.map((banner, index) => (
