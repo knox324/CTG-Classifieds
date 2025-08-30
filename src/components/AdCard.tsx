@@ -11,14 +11,14 @@ interface AdCardProps {
 
 export function AdCard({ ad }: AdCardProps) {
   return (
-    <Link href={`/ad/${ad.id}`} className="group">
-      <Card className="overflow-hidden transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2 hover:bg-white/50 dark:hover:bg-black/50">
+    <Link href={`/ad/${ad.id}`} className="block">
+      <Card className="overflow-hidden transition-all duration-300 ease-in-out hover:shadow-2xl hover:bg-white/50 dark:hover:bg-black/50">
         <div className="relative aspect-[4/3]">
           <Image
             src={ad.imageUrl}
             alt={ad.title}
             fill
-            className="object-cover transition-transform duration-300 group-hover:scale-105"
+            className="object-cover transition-transform duration-300"
             data-ai-hint="product image"
           />
         </div>

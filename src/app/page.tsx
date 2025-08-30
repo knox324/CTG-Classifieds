@@ -1,19 +1,22 @@
 
 "use client";
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { AdCard } from '@/components/AdCard';
 import { getAds } from '@/lib/data';
 import type { Ad } from '@/lib/types';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Box, UserCheck, Star, Baby, User, UserRound, ShoppingBasket, Sofa, Apple, Utensils, GlassWater, Plane, Bus, Car, Bike } from 'lucide-react';
+import { ArrowRight, Box, UserCheck, Star, Baby, User, UserRound, ShoppingBasket, Sofa, Apple, GlassWater, Plane, Bus, Car, Bike } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import Image from 'next/image';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi } from '@/components/ui/carousel';
 
 export default function Home() {
   const ads: Ad[] = getAds();
+  const [carouselApi, setCarouselApi] = useState<CarouselApi | null>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
 
   const stats = [
     { icon: Box, value: "1,200+", label: "Active Ads" },
@@ -58,6 +61,23 @@ export default function Home() {
       document.head.removeChild(style);
     };
   }, []);
+
+  const handleSelect = useCallback(() => {
+    if (carouselApi) {
+      setActiveIndex(carouselApi.selectedScrollSnap());
+    }
+  }, [carouselApi]);
+
+  useEffect(() => {
+    if (carouselApi) {
+      carouselApi.on('select', handleSelect);
+      handleSelect(); // Set initial active index
+      return () => {
+        carouselApi.off('select', handleSelect);
+      };
+    }
+  }, [carouselApi, handleSelect]);
+
 
   return (
     <>
@@ -132,17 +152,24 @@ export default function Home() {
         <h2 className="text-3xl md:text-4xl font-headline font-bold mb-8 text-center">Featured Listings</h2>
         
         <Carousel
+          setApi={setCarouselApi}
           opts={{
-            align: 'start',
+            align: 'center',
             loop: true,
           }}
           className="w-full"
         >
-          <CarouselContent>
-            {ads.map((ad) => (
-              <CarouselItem key={ad.id} className="sm:basis-1/2 lg:basis-1/3 xl:basis-1/4">
+          <CarouselContent className="-ml-4">
+            {ads.map((ad, index) => (
+              <CarouselItem key={ad.id} className="sm:basis-1/2 md:basis-1/3 lg:basis-1/4 group">
                  <div className="p-1">
+                   <div className="transition-all duration-300 ease-in-out" style={{
+                      transform: activeIndex === index ? 'scale(1.05)' : 'scale(0.85)',
+                      opacity: activeIndex === index ? 1 : 0.5,
+                      filter: activeIndex === index ? 'blur(0)' : 'blur(2px)',
+                    }}>
                     <AdCard ad={ad} />
+                   </div>
                  </div>
               </CarouselItem>
             ))}
