@@ -9,11 +9,14 @@ import { Search, MapPin, Plus, UserCircle, Bell, Loader2, Globe, Menu } from "lu
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
 import { ThemeColorPicker } from "../ThemeColorPicker";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { SearchResults } from './SearchResults';
+
 
 export function Header() {
   const [location, setLocation] = useState("Chattogram");
   const [isLoadingLocation, setIsLoadingLocation] = useState(true);
   const [isSheetOpen, setIsSheetOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
 
   // Note: Geolocation is commented out as it requires a reverse geocoding API 
   // to turn coordinates into a location name, which is beyond the scope of this tool.
@@ -50,7 +53,11 @@ export function Header() {
                     type="search" 
                     placeholder="Search products, services..." 
                     className="w-full rounded-full bg-secondary border-transparent pl-11 text-base h-12 focus:bg-background focus:ring-2 focus:ring-primary focus:border-primary"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    onFocus={() => setSearchQuery(searchQuery || '')}
                 />
+                {searchQuery && <SearchResults query={searchQuery} onResultClick={() => setSearchQuery('')} />}
             </div>
         </div>
 
@@ -108,7 +115,10 @@ export function Header() {
                                 type="search" 
                                 placeholder="Search products..." 
                                 className="w-full rounded-full bg-secondary border-transparent pl-11 text-base h-12 focus:bg-background"
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
                             />
+                             {searchQuery && <SearchResults query={searchQuery} onResultClick={() => { setSearchQuery(''); closeSheet(); }} />}
                         </div>
 
                         <nav className="flex flex-col space-y-2">
