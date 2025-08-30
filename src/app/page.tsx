@@ -162,32 +162,40 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="featured-ads" className="container mx-auto px-4 pb-16">
-        <h2 className="text-3xl md:text-4xl font-headline font-bold mb-8 text-center">Featured Ads</h2>
-        <Carousel setApi={setMarketingCarouselApi} opts={{ align: 'center', loop: true }}>
-          <CarouselContent>
-            {marketingBanners.map((banner, index) => (
-              <CarouselItem key={index}>
-                <Card className="overflow-hidden">
-                  <div className="relative aspect-[3/1]">
-                    <Image
-                      src={banner.src}
-                      alt={banner.alt}
-                      fill
-                      className="object-cover"
-                      data-ai-hint={banner.hint}
-                    />
-                  </div>
-                </Card>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious className="hidden md:flex" />
-          <CarouselNext className="hidden md:flex" />
-        </Carousel>
+      <section id="featured-ads" className="py-16 bg-secondary/30">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-headline font-bold mb-12 text-center text-primary">Featured Ads</h2>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 items-center">
+            
+            <div className="hidden md:block md:col-span-1 h-full">
+              <Card className="overflow-hidden h-full shadow-lg hover:shadow-2xl transition-shadow duration-300">
+                <div className="relative aspect-[3/4] h-full">
+                  <Image src="https://picsum.photos/seed/sidebanner1/400/533" alt="Side Banner 1" fill className="object-cover" data-ai-hint="fashion sale" />
+                </div>
+              </Card>
+            </div>
+            
+            <div className="md:col-span-2 h-full">
+               <Card className="overflow-hidden h-full shadow-xl hover:shadow-2xl transition-shadow duration-300 transform md:scale-110">
+                <div className="relative aspect-video md:aspect-[16/9] h-full">
+                  <Image src="https://picsum.photos/seed/mainbanner/800/450" alt="Main Banner" fill className="object-cover" data-ai-hint="electronics deal" />
+                </div>
+              </Card>
+            </div>
+            
+            <div className="hidden md:block md:col-span-1 h-full">
+              <Card className="overflow-hidden h-full shadow-lg hover:shadow-2xl transition-shadow duration-300">
+                <div className="relative aspect-[3/4] h-full">
+                  <Image src="https://picsum.photos/seed/sidebanner2/400/533" alt="Side Banner 2" fill className="object-cover" data-ai-hint="new product" />
+                </div>
+              </Card>
+            </div>
+
+          </div>
+        </div>
       </section>
 
-      <section id="all-products" className="container mx-auto px-4 pb-24">
+      <section id="all-products" className="container mx-auto px-4 py-24">
         <h2 className="text-3xl md:text-4xl font-headline font-bold mb-8 text-center">Explore All Products</h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-6">
           {ads.map(ad => (
