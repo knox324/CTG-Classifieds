@@ -181,7 +181,11 @@ export default function Home() {
                                     <div 
                                         className={`relative aspect-video transition-all duration-500 ease-in-out 
                                         ${activeIndex === index ? 'shadow-2xl' : 'shadow-md'}
-                                        ${Math.abs(activeIndex - index) % featuredAds.length === 1 || Math.abs(activeIndex - index) % featuredAds.length === featuredAds.length -1  ? 'md:scale-90 opacity-70 blur-sm' : 'md:scale-110'}`}
+                                        ${
+                                          activeIndex === index
+                                            ? 'md:scale-125'
+                                            : 'md:scale-90 opacity-70 blur-sm'
+                                        }`}
                                         >
                                         <Image
                                             src={ad.src}
@@ -261,5 +265,7 @@ export default function Home() {
     </>
   );
 }
+
+    
 
     
