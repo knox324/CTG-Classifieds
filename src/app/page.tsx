@@ -160,10 +160,10 @@ export default function Home() {
         >
           <CarouselContent className="-ml-4">
             {ads.map((ad, index) => (
-              <CarouselItem key={ad.id} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 group">
+              <CarouselItem key={ad.id} className="basis-1/2 md:basis-1/3 lg:basis-1/4 group">
                  <div className="p-1">
                    <div className="transition-all duration-300 ease-in-out" style={{
-                      transform: `scale(${activeIndex === index ? 0.8 : 0.6})`,
+                      transform: `scale(${activeIndex === index ? 1 : 0.8})`,
                       opacity: activeIndex === index ? 1 : 0.5,
                       filter: activeIndex === index ? 'blur(0)' : 'blur(2px)',
                     }}>
