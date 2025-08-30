@@ -50,12 +50,12 @@ export default function Home() {
 
   const locations = ["Agrabad", "Nasirabad", "Pahartali", "Khatunganj", "Sitakunda", "Mirsharai", "Fatikchhari"];
   
-    const marketingBanners = [
-    { src: 'https://picsum.photos/seed/banner1/1200/400', alt: 'Marketing Banner 1', hint: 'sale promotion' },
-    { src: 'https://picsum.photos/seed/banner2/1200/400', alt: 'Marketing Banner 2', hint: 'new arrivals' },
-    { src: 'https://picsum.photos/seed/banner3/1200/400', alt: 'Marketing Banner 3', hint: 'special offer' },
-    { src: 'https://picsum.photos/seed/banner4/1200/400', alt: 'Marketing Banner 4', hint: 'holiday discount' },
-    { src: 'https://picsum.photos/seed/banner5/1200/400', alt: 'Marketing Banner 5', hint: 'clearance sale' },
+  const featuredAds = [
+    { src: 'https://picsum.photos/seed/mainbanner/800/450', alt: 'Main Banner', hint: 'electronics deal' },
+    { src: 'https://picsum.photos/seed/sidebanner1/400/533', alt: 'Side Banner 1', hint: 'fashion sale' },
+    { src: 'https://picsum.photos/seed/sidebanner2/400/533', alt: 'Side Banner 2', hint: 'new product' },
+    { src: 'https://picsum.photos/seed/banner4/800/450', alt: 'Marketing Banner 4', hint: 'holiday discount' },
+    { src: 'https://picsum.photos/seed/banner5/800/450', alt: 'Marketing Banner 5', hint: 'clearance sale' },
   ];
   
   useEffect(() => {
@@ -165,33 +165,40 @@ export default function Home() {
       <section id="featured-ads" className="py-16 bg-secondary/30">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-headline font-bold mb-12 text-center text-primary">Featured Ads</h2>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 items-center">
-            
-            <div className="hidden md:block md:col-span-1 h-full">
-              <Card className="overflow-hidden h-full shadow-lg hover:shadow-2xl transition-shadow duration-300">
-                <div className="relative aspect-[3/4] h-full">
-                  <Image src="https://picsum.photos/seed/sidebanner1/400/533" alt="Side Banner 1" fill className="object-cover" data-ai-hint="fashion sale" />
-                </div>
-              </Card>
-            </div>
-            
-            <div className="md:col-span-2 h-full">
-               <Card className="overflow-hidden h-full shadow-xl hover:shadow-2xl transition-shadow duration-300 transform md:scale-110">
-                <div className="relative aspect-video md:aspect-[16/9] h-full">
-                  <Image src="https://picsum.photos/seed/mainbanner/800/450" alt="Main Banner" fill className="object-cover" data-ai-hint="electronics deal" />
-                </div>
-              </Card>
-            </div>
-            
-            <div className="hidden md:block md:col-span-1 h-full">
-              <Card className="overflow-hidden h-full shadow-lg hover:shadow-2xl transition-shadow duration-300">
-                <div className="relative aspect-[3/4] h-full">
-                  <Image src="https://picsum.photos/seed/sidebanner2/400/533" alt="Side Banner 2" fill className="object-cover" data-ai-hint="new product" />
-                </div>
-              </Card>
-            </div>
-
-          </div>
+            <Carousel
+                setApi={setCarouselApi}
+                opts={{
+                    align: "center",
+                    loop: true,
+                }}
+                className="w-full"
+            >
+                <CarouselContent className="-ml-2 md:-ml-4">
+                    {featuredAds.map((ad, index) => (
+                        <CarouselItem key={index} className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3">
+                            <div className="p-1">
+                                <Card className="overflow-hidden transition-all duration-500 ease-in-out">
+                                    <div 
+                                        className={`relative aspect-video transition-all duration-500 ease-in-out 
+                                        ${activeIndex === index ? 'shadow-2xl' : 'shadow-md'}
+                                        ${Math.abs(activeIndex - index) % featuredAds.length === 1 || Math.abs(activeIndex - index) % featuredAds.length === featuredAds.length -1  ? 'md:scale-90 opacity-70 blur-sm' : 'md:scale-110'}`}
+                                        >
+                                        <Image
+                                            src={ad.src}
+                                            alt={ad.alt}
+                                            fill
+                                            className="object-cover"
+                                            data-ai-hint={ad.hint}
+                                        />
+                                    </div>
+                                </Card>
+                            </div>
+                        </CarouselItem>
+                    ))}
+                </CarouselContent>
+                <CarouselPrevious className="hidden md:flex"/>
+                <CarouselNext className="hidden md:flex"/>
+            </Carousel>
         </div>
       </section>
 
@@ -254,3 +261,5 @@ export default function Home() {
     </>
   );
 }
+
+    
