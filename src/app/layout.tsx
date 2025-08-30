@@ -5,6 +5,7 @@ import { Header } from '@/components/layout/Header';
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from '@/components/ThemeProvider';
 import Script from 'next/script';
+import { ScrollToTop } from '@/components/ScrollToTop';
 
 export const metadata: Metadata = {
   title: 'ChattogramAds - Premium Classifieds',
@@ -34,6 +35,7 @@ export default function RootLayout({
           <Header />
           <main>{children}</main>
           <Toaster />
+          <ScrollToTop />
         </ThemeProvider>
 
         <Script
