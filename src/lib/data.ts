@@ -177,7 +177,7 @@ const ads: Ad[] = [
     description: 'Fast and durable remote control car for kids. Perfect gift for birthdays. Batteries included.',
     price: 1800,
     imageUrl: 'https://picsum.photos/seed/ad9/600/400',
-    sellerId: 'seller-4',
+    sellerId: 'seller-13',
     category: 'Kid\'s Corner',
     location: 'Patiya, Chattogram',
   },
@@ -187,7 +187,7 @@ const ads: Ad[] = [
     description: 'Safe and comfortable stroller for your little one. Easy to fold and carry. Multiple recline positions.',
     price: 6500,
     imageUrl: 'https://picsum.photos/seed/ad15/600/400',
-    sellerId: 'seller-4',
+    sellerId: 'seller-13',
     category: 'Kid\'s Corner',
     location: 'Patiya, Chattogram',
   },
@@ -238,7 +238,7 @@ const ads: Ad[] = [
     description: 'Comfortable cotton T-shirt, perfect for summer. Various designs available.',
     price: 800,
     imageUrl: 'https://picsum.photos/seed/ad8/600/400',
-    sellerId: 'seller-2',
+    sellerId: 'seller-14',
     category: 'Men\'s Corner',
     location: 'Boalkhali, Chattogram',
   },
@@ -258,7 +258,7 @@ const ads: Ad[] = [
     description: 'Elegant formal shoes for men. Made from genuine leather. Perfect for office or parties.',
     price: 3800,
     imageUrl: 'https://picsum.photos/seed/ad22/600/400',
-    sellerId: 'seller-2',
+    sellerId: 'seller-14',
     category: 'Men\'s Corner',
     location: 'Agrabad, Chattogram',
   },
@@ -279,7 +279,7 @@ const ads: Ad[] = [
     description: 'A stylish and spacious handbag for every occasion. High-quality synthetic leather.',
     price: 2500,
     imageUrl: 'https://picsum.photos/seed/ad5/600/400',
-    sellerId: 'seller-2',
+    sellerId: 'seller-15',
     category: 'Female\'s Corner',
     location: 'Agrabad, Chattogram',
   },
@@ -289,7 +289,7 @@ const ads: Ad[] = [
     description: 'Elegant and classy watch for women. Stainless steel strap with a beautiful dial.',
     price: 3800,
     imageUrl: 'https://picsum.photos/seed/ad12/600/400',
-    sellerId: 'seller-2',
+    sellerId: 'seller-15',
     category: 'Female\'s Corner',
     location: 'Agrabad, Chattogram',
   },
@@ -330,7 +330,7 @@ const ads: Ad[] = [
     description: 'Pure and organic honey, directly from the Sundarbans. Rich in taste and health benefits.',
     price: 750,
     imageUrl: 'https://picsum.photos/seed/ad25/600/400',
-    sellerId: 'seller-5',
+    sellerId: 'seller-11',
     category: 'Grocery Corner',
     location: 'Boalkhali, Chattogram',
   },
@@ -503,7 +503,7 @@ const ads: Ad[] = [
     description: 'High-precision gaming mouse with customizable RGB lighting. 16000 DPI sensor.',
     price: 2800,
     imageUrl: 'https://picsum.photos/seed/ad7/600/400',
-    sellerId: 'seller-1',
+    sellerId: 'seller-4',
     category: 'Beveridge Corner',
     location: 'Sitakunda, Chattogram',
   },
@@ -553,4 +553,8 @@ export function getSellerById(id: string): Seller | undefined {
 
 export function getAdsBySellerId(sellerId: string): AdWithSeller[] {
   return adsWithSellers.filter(ad => ad.sellerId === sellerId);
+}
+
+export function getAdsByCategory(category: string): AdWithSeller[] {
+  return adsWithSellers.filter(ad => ad.category === category);
 }

@@ -25,13 +25,13 @@ export default function Home() {
   ];
 
   const categories = [
-    { name: "Kid's Corner", icon: Baby, href: "#" },
-    { name: "Men's Corner", icon: User, href: "#" },
-    { name: "Female's Corner", icon: UserRound, href: "#" },
-    { name: "Grocery Corner", icon: ShoppingBasket, href: "#" },
-    { name: "Furniture's Corner", icon: Sofa, href: "#" },
-    { name: "Fruit's Corner", icon: Apple, href: "#" },
-    { name: "Beverage Corner", icon: GlassWater, href: "#" },
+    { name: "Kid's Corner", icon: Baby, href: "/category/Kid's Corner" },
+    { name: "Men's Corner", icon: User, href: "/category/Men's Corner" },
+    { name: "Female's Corner", icon: UserRound, href: "/category/Female's Corner" },
+    { name: "Grocery Corner", icon: ShoppingBasket, href: "/category/Grocery Corner" },
+    { name: "Furniture's Corner", icon: Sofa, href: "/category/Furniture's Corner" },
+    { name: "Fruit's Corner", icon: Apple, href: "/category/Fruit's Corner" },
+    { name: "Beveridge Corner", icon: GlassWater, href: "/category/Beveridge Corner" },
   ];
   
   const deliveryMethods = [
@@ -160,12 +160,11 @@ export default function Home() {
         >
           <CarouselContent className="-ml-4">
             {ads.map((ad, index) => (
-              <CarouselItem key={ad.id} className="basis-[80%] sm:basis-[60%] md:basis-1/3 lg:basis-1/4 group">
+              <CarouselItem key={ad.id} className="basis-[90%] sm:basis-[70%] md:basis-1/3 group">
                  <div className="p-1 h-full">
-                   <div className="transition-all duration-300 ease-in-out h-full" style={{
+                   <div className="transition-all duration-500 ease-in-out h-full" style={{
                       transform: `scale(${activeIndex === index ? 1 : 0.85})`,
-                      opacity: activeIndex === index ? 1 : 0.5,
-                      filter: activeIndex === index ? 'blur(0)' : 'blur(2px)',
+                      opacity: activeIndex === index ? 1 : 0.6,
                     }}>
                     <AdCard ad={ad} />
                    </div>
