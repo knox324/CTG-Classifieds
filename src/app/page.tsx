@@ -44,7 +44,6 @@ export default function Home() {
   const locations = ["Agrabad", "Nasirabad", "Pahartali", "Khatunganj", "Sitakunda", "Mirsharai", "Fatikchhari"];
   
   useEffect(() => {
-    // Helper CSS to hide scrollbar
     const style = document.createElement('style');
     style.innerHTML = `
       .no-scrollbar::-webkit-scrollbar {
@@ -71,7 +70,7 @@ export default function Home() {
   useEffect(() => {
     if (carouselApi) {
       carouselApi.on('select', handleSelect);
-      handleSelect(); // Set initial active index
+      handleSelect();
       return () => {
         carouselApi.off('select', handleSelect);
       };
@@ -118,7 +117,7 @@ export default function Home() {
                           <stat.icon className="h-6 w-6 md:h-7 md:w-7 text-primary" />
                           <div>
                               <p className="text-sm md:text-xl font-bold text-foreground">{stat.value}</p>
-                              <p className="text-xs text-foreground/80 md:block">{stat.label}</p>
+                              <p className="text-xs text-foreground/80">{stat.label}</p>
                           </div>
                       </div>
                   ))}
@@ -229,3 +228,5 @@ export default function Home() {
     </>
   );
 }
+
+    
