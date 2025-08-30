@@ -163,7 +163,7 @@ export default function Home() {
               <CarouselItem key={ad.id} className="sm:basis-1/2 md:basis-1/3 lg:basis-1/4 group">
                  <div className="p-1">
                    <div className="transition-all duration-300 ease-in-out" style={{
-                      transform: activeIndex === index ? 'scale(1.4)' : 'scale(0.7)',
+                      transform: activeIndex === index ? 'scale(1.2)' : 'scale(0.6)',
                       opacity: activeIndex === index ? 1 : 0.5,
                       filter: activeIndex === index ? 'blur(0)' : 'blur(2px)',
                     }}>
