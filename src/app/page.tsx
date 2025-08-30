@@ -160,7 +160,7 @@ export default function Home() {
         >
           <CarouselContent className="-ml-4">
             {ads.map((ad, index) => (
-              <CarouselItem key={ad.id} className="sm:basis-1/2 md:basis-1/3 lg:basis-1/4 group">
+              <CarouselItem key={ad.id} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 group">
                  <div className="p-1">
                    <div className="transition-all duration-300 ease-in-out" style={{
                       transform: activeIndex === index ? 'scale(1.2)' : 'scale(0.6)',
@@ -177,6 +177,15 @@ export default function Home() {
           <CarouselNext className="hidden md:flex"/>
         </Carousel>
       </div>
+
+      <section id="all-products" className="container mx-auto px-4 pb-24">
+        <h2 className="text-3xl md:text-4xl font-headline font-bold mb-8 text-center">Explore All Products</h2>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-6">
+          {ads.map(ad => (
+            <AdCard key={ad.id} ad={ad} />
+          ))}
+        </div>
+      </section>
       
        <section className="relative py-24 bg-secondary/30 overflow-hidden">
         <div className="absolute inset-0">
