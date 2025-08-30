@@ -187,7 +187,7 @@ export default function Home() {
       </section>
 
       <div id="featured" className="container mx-auto px-4 pb-24">
-        <h2 className="text-3xl md:text-4xl font-headline font-bold mb-8 text-center">Featured Listings</h2>
+        <h2 className="text-3xl md:text-4xl font-headline font-bold mb-8 text-center">Featured Ads</h2>
         
         <Carousel
           setApi={setCarouselApi}
