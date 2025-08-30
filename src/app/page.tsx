@@ -163,7 +163,7 @@ export default function Home() {
       </section>
 
       <section id="featured-ads" className="container mx-auto px-4 pb-16">
-        <h2 className="text-3xl md:text-4xl font-headline font-bold mb-8 text-center">Featured ads</h2>
+        <h2 className="text-3xl md:text-4xl font-headline font-bold mb-8 text-center">Featured Ads</h2>
         <Carousel setApi={setMarketingCarouselApi} opts={{ align: 'center', loop: true }}>
           <CarouselContent>
             {marketingBanners.map((banner, index) => (
