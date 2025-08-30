@@ -38,8 +38,8 @@ export function ScrollToTop() {
         size="icon"
         onClick={scrollToTop}
         className={cn(
-            "rounded-full h-12 w-12 bg-card/60 text-primary border-2 border-primary backdrop-blur-sm transition-opacity hover:bg-card/80",
-            isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
+            "rounded-full h-12 w-12 bg-primary text-primary-foreground shadow-lg transition-all duration-300 ease-in-out hover:bg-primary/90 hover:scale-110",
+            isVisible ? "opacity-100 scale-100" : "opacity-0 scale-0 pointer-events-none"
         )}
       >
         <ChevronUp className="h-6 w-6" />
