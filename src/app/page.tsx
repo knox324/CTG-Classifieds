@@ -182,7 +182,7 @@ export default function Home() {
                                         className={`relative aspect-video transition-all duration-500 ease-in-out rounded-xl
                                         ${
                                           activeIndex === index
-                                            ? 'md:scale-125 shadow-[0_0_20px_5px] shadow-primary/50'
+                                            ? 'md:scale-125 shadow-[0_0_35px_8px] shadow-primary/50'
                                             : 'md:scale-90 opacity-70'
                                         }`}
                                         >
@@ -264,7 +264,3 @@ export default function Home() {
     </>
   );
 }
-
-    
-
-    
