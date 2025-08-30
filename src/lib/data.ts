@@ -1,5 +1,5 @@
 
-import type { Ad, Seller, AdWithSeller } from './types';
+import type { Ad, Seller, AdWithSeller, Category } from './types';
 
 const sellers: Seller[] = [
   {
@@ -167,6 +167,16 @@ const sellers: Seller[] = [
     rating: 4.8,
     reviews: 400,
   },
+];
+
+export const categories: Category[] = [
+    { name: "Kid's Corner", subcategories: ["Toys & Games", "Baby Gear", "Kids' Fashion", "School Supplies", "Books for Kids", "Strollers & Carriers", "Nursery Furniture", "Kids' Shoes", "Outdoor Play", "Party Supplies"] },
+    { name: "Men's Corner", subcategories: ["Men's Fashion", "Men's Shoes", "Watches & Accessories", "Grooming & Personal Care", "Sportswear", "Formal Wear", "Bags & Wallets", "Gadgets for Men", "Sunglasses", "Traditional Wear"] },
+    { name: "Female's Corner", subcategories: ["Women's Fashion", "Women's Shoes", "Handbags & Purses", "Jewelry", "Makeup & Cosmetics", "Skincare", "Traditional Wear", "Lingerie & Sleepwear", "Maternity Wear", "Accessories"] },
+    { name: "Grocery Corner", subcategories: ["Rice & Grains", "Cooking Oil", "Spices & Masalas", "Lentils & Pulses (Dal)", "Flour & Atta", "Sugar & Salt", "Tea & Coffee", "Noodles & Pasta", "Canned Goods", "Snacks & Biscuits"] },
+    { name: "Furniture's Corner", subcategories: ["Sofas & Living Room", "Beds & Bedroom", "Dining Sets", "Office Furniture", "Storage & Cabinets", "Outdoor Furniture", "Kids' Furniture", "Mattresses", "Home Decor", "Lighting"] },
+    { name: "Fruit's Corner", subcategories: ["Mangoes", "Bananas", "Apples", "Oranges & Citrus", "Grapes", "Berries", "Melons", "Dates", "Guava", "Papaya"] },
+    { name: "Beveridge Corner", subcategories: ["Soft Drinks", "Juices", "Water", "Energy Drinks", "Powdered Drinks", "Tea", "Coffee", "Milk & Dairy Drinks", "Healthy & Herbal Drinks", "Syrups & Concentrates"] },
 ];
 
 const ads: Ad[] = [
@@ -555,6 +565,10 @@ export function getAdsBySellerId(sellerId: string): AdWithSeller[] {
   return adsWithSellers.filter(ad => ad.sellerId === sellerId);
 }
 
-export function getAdsByCategory(category: string): AdWithSeller[] {
-  return adsWithSellers.filter(ad => ad.category === category);
+export function getAdsByCategory(categoryName: string): AdWithSeller[] {
+  return adsWithSellers.filter(ad => ad.category === categoryName);
+}
+
+export function getCategoryByName(categoryName: string): Category | undefined {
+    return categories.find(c => c.name === categoryName);
 }

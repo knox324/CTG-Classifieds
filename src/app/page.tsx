@@ -3,7 +3,7 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { AdCard } from '@/components/AdCard';
-import { getAds } from '@/lib/data';
+import { getAds, categories as dataCategories } from '@/lib/data';
 import type { AdWithSeller } from '@/lib/types';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -11,6 +11,16 @@ import { ArrowRight, Box, UserCheck, Star, Baby, User, UserRound, ShoppingBasket
 import { Card } from '@/components/ui/card';
 import Image from 'next/image';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi } from '@/components/ui/carousel';
+
+const categoryIcons: { [key: string]: React.ElementType } = {
+    "Kid's Corner": Baby,
+    "Men's Corner": User,
+    "Female's Corner": UserRound,
+    "Grocery Corner": ShoppingBasket,
+    "Furniture's Corner": Sofa,
+    "Fruit's Corner": Apple,
+    "Beveridge Corner": GlassWater,
+};
 
 export default function Home() {
   const ads: AdWithSeller[] = getAds();
@@ -24,15 +34,11 @@ export default function Home() {
     { icon: Star, value: "4.9", label: "Average Rating" },
   ];
 
-  const categories = [
-    { name: "Kid's Corner", icon: Baby, href: "/category/Kid's Corner" },
-    { name: "Men's Corner", icon: User, href: "/category/Men's Corner" },
-    { name: "Female's Corner", icon: UserRound, href: "/category/Female's Corner" },
-    { name: "Grocery Corner", icon: ShoppingBasket, href: "/category/Grocery Corner" },
-    { name: "Furniture's Corner", icon: Sofa, href: "/category/Furniture's Corner" },
-    { name: "Fruit's Corner", icon: Apple, href: "/category/Fruit's Corner" },
-    { name: "Beveridge Corner", icon: GlassWater, href: "/category/Beveridge Corner" },
-  ];
+  const categories = dataCategories.map(c => ({
+      name: c.name,
+      icon: categoryIcons[c.name] || Box,
+      href: `/category/${encodeURIComponent(c.name)}`,
+  }));
   
   const deliveryMethods = [
     { name: "Air Cargo", icon: Plane },

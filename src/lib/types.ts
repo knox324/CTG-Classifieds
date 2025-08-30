@@ -1,3 +1,4 @@
+
 export interface Ad {
   id: string;
   title: string;
@@ -23,4 +24,9 @@ export interface Seller {
 
 export interface AdWithSeller extends Ad {
   seller: Seller;
+}
+
+export interface Category {
+    name: string;
+    subcategories: string[];
 }
