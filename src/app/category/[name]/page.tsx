@@ -66,10 +66,10 @@ export default function CategoryPage({ params }: { params: { name: string } }) {
             <div className="w-48">
                  <Select onValueChange={setSortOption} defaultValue="default">
                     <SelectTrigger className="w-full">
-                        <SelectValue placeholder="Sort by" />
+                        <SelectValue placeholder="Default Filter" />
                     </SelectTrigger>
                     <SelectContent>
-                        <SelectItem value="default">Default</SelectItem>
+                        <SelectItem value="default">Default Filter</SelectItem>
                         <SelectItem value="price_asc">Price: Low to High</SelectItem>
                         <SelectItem value="rating_desc">Best Rating</SelectItem>
                     </SelectContent>
