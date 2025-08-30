@@ -20,3 +20,7 @@ export interface Seller {
   rating: number;
   reviews: number;
 }
+
+export interface AdWithSeller extends Ad {
+  seller: Seller;
+}

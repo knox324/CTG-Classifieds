@@ -1,4 +1,4 @@
-import type { Ad, Seller } from './types';
+import type { Ad, Seller, AdWithSeller } from './types';
 
 const sellers: Seller[] = [
   {
@@ -416,18 +416,27 @@ const ads: Ad[] = [
   },
 ];
 
-export function getAds(): Ad[] {
-  return ads;
+const adsWithSellers: AdWithSeller[] = ads.map(ad => {
+  const seller = sellers.find(s => s.id === ad.sellerId);
+  if (!seller) {
+    throw new Error(`Seller not found for ad with id ${ad.id}`);
+  }
+  return { ...ad, seller };
+});
+
+
+export function getAds(): AdWithSeller[] {
+  return adsWithSellers;
 }
 
-export function getAdById(id: string): Ad | undefined {
-  return ads.find(ad => ad.id === id);
+export function getAdById(id: string): AdWithSeller | undefined {
+  return adsWithSellers.find(ad => ad.id === id);
 }
 
 export function getSellerById(id: string): Seller | undefined {
   return sellers.find(seller => seller.id === id);
 }
 
-export function getAdsBySellerId(sellerId: string): Ad[] {
-  return ads.filter(ad => ad.sellerId === sellerId);
+export function getAdsBySellerId(sellerId: string): AdWithSeller[] {
+  return adsWithSellers.filter(ad => ad.sellerId === sellerId);
 }

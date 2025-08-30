@@ -4,7 +4,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { AdCard } from '@/components/AdCard';
 import { getAds } from '@/lib/data';
-import type { Ad } from '@/lib/types';
+import type { AdWithSeller } from '@/lib/types';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Box, UserCheck, Star, Baby, User, UserRound, ShoppingBasket, Sofa, Apple, GlassWater, Plane, Bus, Car, Bike } from 'lucide-react';
@@ -13,7 +13,7 @@ import Image from 'next/image';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi } from '@/components/ui/carousel';
 
 export default function Home() {
-  const ads: Ad[] = getAds();
+  const ads: AdWithSeller[] = getAds();
   const [carouselApi, setCarouselApi] = useState<CarouselApi | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -160,10 +160,10 @@ export default function Home() {
         >
           <CarouselContent className="-ml-4">
             {ads.map((ad, index) => (
-              <CarouselItem key={ad.id} className="basis-1/2 md:basis-1/3 lg:basis-1/4 group">
-                 <div className="p-1">
-                   <div className="transition-all duration-300 ease-in-out" style={{
-                      transform: `scale(${activeIndex === index ? 1 : 0.8})`,
+              <CarouselItem key={ad.id} className="basis-[80%] sm:basis-[60%] md:basis-1/3 lg:basis-1/4 group">
+                 <div className="p-1 h-full">
+                   <div className="transition-all duration-300 ease-in-out h-full" style={{
+                      transform: `scale(${activeIndex === index ? 1 : 0.85})`,
                       opacity: activeIndex === index ? 1 : 0.5,
                       filter: activeIndex === index ? 'blur(0)' : 'blur(2px)',
                     }}>
