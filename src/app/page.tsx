@@ -186,31 +186,6 @@ export default function Home() {
         </Carousel>
       </section>
 
-      <div id="featured" className="container mx-auto px-4 pb-24">
-        <h2 className="text-3xl md:text-4xl font-headline font-bold mb-8 text-center">Featured Ads</h2>
-        
-        <Carousel
-          setApi={setCarouselApi}
-          opts={{
-            align: 'start',
-            loop: true,
-          }}
-          className="w-full"
-        >
-          <CarouselContent className="-ml-4">
-            {ads.map((ad, index) => (
-              <CarouselItem key={ad.id} className="basis-[90%] sm:basis-[45%] md:basis-1/3 lg:basis-1/4 group">
-                 <div className="p-1 h-full">
-                    <AdCard ad={ad} />
-                 </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious className="hidden md:flex"/>
-          <CarouselNext className="hidden md:flex"/>
-        </Carousel>
-      </div>
-
       <section id="all-products" className="container mx-auto px-4 pb-24">
         <h2 className="text-3xl md:text-4xl font-headline font-bold mb-8 text-center">Explore All Products</h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-6">
